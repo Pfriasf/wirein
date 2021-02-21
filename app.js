@@ -5,13 +5,17 @@ const express = require('express');
 const favicon = require('serve-favicon');
 const hbs = require('hbs');
 const logger = require('morgan');
-const routes = require("./config/routes")
+const router = require("./config/routes")
 const path = require("path");
 const passport = require('passport');
+const session = require("./config/session.config");
 
 
 require("./config/db.config");
 require('./config/passport.config')
+const sessionMiddleware = require('./middlewares/session.middleware') //requiero el middleware de la sessión
+
+const User = require('./models/User.model')
 
 
 
@@ -39,15 +43,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, "../views/partials"));
 
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
     req.currentUser = req.user;
     res.locals.currentUser = req.user;
 
     next()
-})*/
+})
 
 
-app.use('/', routes);
+app.use('/', router);
+app.use(sessionMiddleware.findUser)
 
 //error handler 
 
