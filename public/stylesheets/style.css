@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+nav {
+  margin: -50px -50px 50px;
+}
+
+.navbar-brand {
+  font-weight: 800;
+}
