@@ -1,0 +1,34 @@
+                        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+                        .navbar-brand {
+                            font-weight: 800;
+                            padding-left: 5rem;
+                        }
+                        
+                        .navbar-nav,
+                        .mr-auto {
+                            align-items: flex-end;
+                        }
+                        
+                        p {
+                            color: blueviolet;
+                            font-weight: lighter;
+                        }
+                        
+                        .wiredin,
+                        h1,
+                        .superititle {
+                            font-family: 'Bangers', cursive;
+                            color: white;
+                            text-align: center;
+                            font-size: 120px;
+                        }
+                        
+                        .btn,
+                        .btn-login {
+                            border: 2px solid white;
+                            border-radius: 14px;
+                        }
+                        
+                        .order {
+                            padding-right: 5rem;
+                        }
