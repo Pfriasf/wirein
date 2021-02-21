@@ -7,6 +7,7 @@ const hbs = require('hbs');
 const logger = require('morgan');
 const routes = require("./config/routes")
 const path = require("path");
+const passport = require('passport');
 
 
 require("./config/db.config");
@@ -37,6 +38,13 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, "../views/partials"));
+
+/*app.use((req, res, next) => {
+    req.currentUser = req.user;
+    res.locals.currentUser = req.user;
+
+    next()
+})*/
 
 
 app.use('/', routes);

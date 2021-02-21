@@ -36,7 +36,13 @@ const userSchema = new mongoose.Schema({
     },
     social: {
         google: String,
-        facebook: String,
+    },
+    facebook: {
+        id: String,
+        token: String,
+        email: String,
+        name: String,
+
     },
     activationToken: {
         type: String,
@@ -66,4 +72,6 @@ userSchema.pre('save', function(next) {
     }
 })
 const User = mongoose.model('User', userSchema)
+module.exports = User;
+model('User', userSchema)
 module.exports = User;
