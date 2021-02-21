@@ -122,7 +122,7 @@ passport.use('google-auth', new GoogleStrategy({
             .catch(next)
     } else {
         next(null, null, {
-            error: 'Error conectando con Google OAuth'
+            error: 'Error connecting with Google OAuth'
         })
     }
 }))

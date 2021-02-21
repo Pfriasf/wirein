@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const EMAIL_PATTERN = /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const PASSWORD_PATTERN = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+//const PASSWORD_PATTERN = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
 const SALT_ROUNDS = 11
 const {
     v4: uuidv4
@@ -26,8 +26,8 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: 'The password field is required',
-        unique: true,
-        match: [PASSWORD_PATTERN, "The password you entered doesn't meet minimum security requirements"]
+        /*unique: true,*/
+        //match: [PASSWORD_PATTERN, "The password you entered doesn't meet minimum security requirements"]
 
     },
     active: {

@@ -10,35 +10,57 @@ module.exports.register = (req, res, next) => {
 
 module.exports.doRegister = (req, res, next) => {
     function renderWithErrors(errors) {
-        res.status(400).render("users/register", {
+        res.status(400).render('users/register', {
             errors: errors,
-            user: req.body,
-        });
+            user: req.body
+        })
     }
 
-    User.findOne({ email: req.body.email })
+    //que no se repitan los usuarios y mail
+    User.findOne({
+            //email: req.body.email
+            username: req.body.username
+        })
         .then((user) => {
             if (user) {
                 renderWithErrors({
-                    email: "This email is already registered",
-                });
+                    username: 'Username already exists'
+                })
             } else {
-                User.create(req.body)
-                    .then((u) => {
-                        sendActivationEmail(u.email, u.activationToken);
-                        res.redirect("/");
+                User.findOne({
+                        email: req.body.email
+                            // username: req.body.username
                     })
-                    .catch((e) => {
-                        if (e instanceof mongoose.Error.ValidationError) {
-                            renderWithErrors(e.errors);
+                    .then((user) => {
+                        if (user) {
+                            renderWithErrors({
+                                email: 'This email is already registered '
+                            })
+
                         } else {
-                            next(e);
+                            User.create(req.body)
+                                .then((user) => { //la u es de user
+
+                                    //AQUI SE PONE LA LOGICA PARA ENVIAR EL MAIL DE ACTIVACION
+
+                                    sendActivationEmail(user.email, user.activationToken) //el mail y token salen del modelo
+
+                                    res.render('users/mails')
+                                })
+                                .catch(e => {
+                                    if (e instanceof mongoose.Error.ValidationError) {
+                                        console.log(e.errors)
+                                        renderWithErrors(e.errors)
+                                    } else {
+                                        next(e)
+                                    }
+                                })
                         }
-                    });
+                    })
             }
         })
-        .catch((e) => next(e));
-};
+        .catch(e => next(e))
+}
 
 module.exports.login = (req, res, next) => {
     res.render("users/login");
