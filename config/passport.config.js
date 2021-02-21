@@ -42,12 +42,12 @@ passport.use('local-auth', new LocalStrategy({
         .catch(next)
 }))
 
-passport.use('google-auth', new GoogleStrategy({
-    clientID: process.env.G_CLIENT_ID,
-    clientSecret: process.env.G_CLIENT_SECRET,
-    callbackURL: process.env.G_REDIRECT_URI || '/authenticate/google/cb'
+passport.use('facebook-auth', new FacebookStrategy({
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: process.env.FACEBOOK_REDIRECT_URI || "/auth/facebook / callback"
 }, (accessToken, refreshToken, profile, next) => {
-    const googleID = profile.id
+    const facebookID = profile.id
     const email = profile.emails[0] ? profile.emails[0].value : undefined;
 
     if (googleID && email) {

@@ -10,6 +10,7 @@ const path = require("path");
 
 
 require("./config/db.config");
+require('./config/passport.config')
 
 
 
@@ -23,6 +24,9 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/public', express.static(__dirname + '/public')); // este es el que me sirve a mi
 app.use(logger('dev'));
+app.use(session);
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
