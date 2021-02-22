@@ -15,24 +15,18 @@ router.get("/", miscController.home);
 //Users
 router.get("/register", secure.isNotAuthenticated, usersController.register);
 router.post("/register", secure.isNotAuthenticated, usersController.doRegister);
+
 router.get("/login", secure.isNotAuthenticated, usersController.login);
 router.post("/login", secure.isNotAuthenticated, usersController.doLogin);
-router.get(
-    "/activate/:token",
-    secure.isNotAuthenticated,
-    usersController.activate
-); // esto es la ruta para que me devuelva a mi servidor lo del mail de activación
+
+router.get("/activate/:token", secure.isNotAuthenticated, usersController.activate); // esto es la ruta para que me devuelva a mi servidor lo del mail de activación
 //el token es para que sepa qué usuario es
 
 router.get('/authenticate/google', passport.authenticate('google-auth', { scope: GOOGLE_SCOPES }))
 router.get('/authenticate/google/cb', usersController.doLoginGoogle)
 
-router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }))
-router.get('/facebook/callback',
-    passport.authenticate('facebook', {
-        successRedirect: '/profile',
-        failureRedirect: '/error'
-    }));
+router.get("/authenticate/facebook", passport.authenticate("facebook-auth", { scope: ["email"] }));
+router.get("/authenticate/facebook/cb", usersController.doLoginFacebook);
 
 router.post("/logout", secure.isAuthenticated, usersController.logout);
 router.get("/profile", secure.isAuthenticated, usersController.profile);

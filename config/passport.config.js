@@ -1,9 +1,11 @@
 const passport = require('passport');
 const mongoose = require('mongoose')
+
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const User = require('../models/User.model')
 const FacebookStrategy = require('passport-facebook').Strategy;
+
+const User = require('../models/User.model')
 
 passport.serializeUser((user, next) => {
     next(null, user.id);
@@ -50,46 +52,44 @@ passport.use('local-auth', new LocalStrategy({
         .catch(next)
 }))
 
-/*passport.use('facebook-auth', new FacebookStrategy({
-    clientID: process.env.FACEBOOK_APP_ID,
-    clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: process.env.FACEBOOK_REDIRECT_URI || "/auth/facebook/callback"
-}, (accessToken, refreshToken, profile, next) => {
-    //const facebookID = profile.id
-    //const email = profile.emails
-    process.nextTick(function() {
-        User.findOne({
-            'facebook.id': profile.id
-        }, function(err, user) {
-            if (err)
-                return next(err);
-            if (user)
-                return next(null, user);
-            else {
-                let newUser = new User();
-                newUser.facebook.id = profile.id;
-                newUser.facebook.token = accessToken;
-                newUser.facebook.name = profile.name.givenName + '' + profile.name.familyName;
-                newUser.facebook.email = profile.emails[0].value;
+passport.use(
+  "facebook-auth",
+  new FacebookStrategy(
+    {
+      clientID: process.env.FACEBOOK_APP_ID,
+      clientSecret: process.env.FACEBOOK_APP_SECRET,
+      callbackURL:
+        process.env.FACEBOOK_REDIRECT_URI || "/authenticate/facebook/cb",
+    },
+    (accessToken, refreshToken, profile, next) => {
+      const facebookID = profile.id;
+      //const email = profile.email;
 
-                newUser.save(function(err) {
-                    if (err)
-                        throw err;
-                    return next(null, newUser);
-                })
+      if (facebookID) {
+        User.findOne({ "social.facebook": facebookID })
+          .then((user) => {
+            if (!user) {
+              User.create({
+                email: "hola@prueba.com",
+                password: "Aa1" + mongoose.Types.ObjectId(),
+                social: {
+                  facebook: facebookID,
+                },
+                active: true,
+              }).then((newUser) => {
+                next(null, newUser);
+              });
+            } else {
+              next(null, user);
             }
-        })
-    })
-
-}))*/
-passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_APP_ID,
-    clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: process.env.FACEBOOK_REDIRECT_URI
-}, function(accessToken, refreshToken, profile, done) {
-    console.log(profile)
-    return done(null, profile);
-}));
+          })
+          .catch(next);
+      } else {
+        next(null, null, { error: "Error connecting with Facebook" });
+      }
+    }
+  )
+);
 
 
 passport.use('google-auth', new GoogleStrategy({
