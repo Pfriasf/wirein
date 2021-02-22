@@ -25,9 +25,15 @@ router.get(
 //el token es para que sepa qué usuario es
 
 router.get('/authenticate/google', passport.authenticate('google-auth', { scope: GOOGLE_SCOPES }))
-router.get('/auth/facebook', passport.authenticate('facebook-auth', { scope: ['email'] }))
 router.get('/authenticate/google/cb', usersController.doLoginGoogle)
-router.get('/auth/facebook/callback', usersController.doLoginFacebook)
+
+router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }))
+router.get('/facebook/callback',
+    passport.authenticate('facebook', {
+        successRedirect: '/profile',
+        failureRedirect: '/error'
+    }));
+
 router.post("/logout", secure.isAuthenticated, usersController.logout);
 router.get("/profile", secure.isAuthenticated, usersController.profile);
 

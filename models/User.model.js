@@ -10,7 +10,6 @@ const {
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: 'The username field is required',
         unique: true,
         trim: true
     },
@@ -38,8 +37,6 @@ const userSchema = new mongoose.Schema({
         google: String,
     },
     facebook: {
-        id: String,
-        token: String,
         email: String,
         name: String,
 

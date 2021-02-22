@@ -96,20 +96,20 @@ module.exports.doLoginGoogle = (req, res, next) => {
     })(req, res, next)
 }
 
-module.exports.doLoginFacebook = (req, res, next) => {
-    passport.authenticate('facebook-auth', (error, user, validations) => {
-        if (error) {
-            next(error);
-        } else if (!user) {
-            res.status(400).render('users/login', { user: req.body, error: validations });
-        } else {
-            req.login(user, loginErr => {
-                if (loginErr) next(loginErr)
-                else res.redirect('/')
-            })
-        }
-    })(req, res, next)
-}
+/*module.exports.doLoginFacebook = (req, res, next) => {
+passport.authenticate('facebook-auth', (error, user, validations) => {
+    if (error) {
+        next(error);
+    } else if (!user) {
+        res.status(400).render('users/login', { user: req.body, error: validations });
+    } else {
+        req.login(user, loginErr => {
+            if (loginErr) next(loginErr)
+            else res.redirect('/')
+        })
+    }
+})(req, res, next)
+}*/
 
 module.exports.logout = (req, res, next) => {
     req.logout();

@@ -50,7 +50,7 @@ passport.use('local-auth', new LocalStrategy({
         .catch(next)
 }))
 
-passport.use('facebook-auth', new FacebookStrategy({
+/*passport.use('facebook-auth', new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
     callbackURL: process.env.FACEBOOK_REDIRECT_URI || "/auth/facebook/callback"
@@ -81,7 +81,15 @@ passport.use('facebook-auth', new FacebookStrategy({
         })
     })
 
-}))
+}))*/
+passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: process.env.FACEBOOK_REDIRECT_URI
+}, function(accessToken, refreshToken, profile, done) {
+    console.log(profile)
+    return done(null, profile);
+}));
 
 
 passport.use('google-auth', new GoogleStrategy({
