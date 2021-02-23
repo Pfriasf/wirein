@@ -1,23 +1,47 @@
 <div class="container">
-  <form action="/login" method="POST">
-    <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" name="email" value="{{user.email}}" class="form-control" id="email" required>
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" name="password" class="form-control" id="password" required>
-    </div>
+  <div class="row login">
+    <div class="col-lg-3 col-md-2"></div>
+    <div class="col-lg-6 col-md-8 login-box">
+      <div class="social">
+        <a id="google_login" class="circle google" href="/authenticate/google">
+          <i class="fa fa-google-plus fa-fw"></i>
+        </a>
+        <a id="facebook_login" class="circle facebook" href="/authenticate/facebook">
+          <i class="fa fa-facebook fa-fw"></i>
+        </a>
+        <a id="twitter_login" class="circle twitter" href="/">
+          <i class="fab fa-twitter fa-fw"></i>
+        </a>
+      </div>
+      <div class="col-lg-10 login-form">
+        <div class="col-lg-12 login-form">
+          <form action="/login" method="POST">
+            <div class="form-group">
+              <label class="form-control-label">EMAIL</label>
+              <input type="email" name="email" value="{{user.email}}" class="form-control" id="email"
+                placeholder="example@example.com &#x1F4E7;" required>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">PASSWORD</label>
+              <input type="password" name="password" class="form-control"
+                placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679; &#x1F512" id="password" required>
+            </div>
 
-    {{#if error}}
-      <p class="error-message">{{error}}</p>
-    {{/if}}
-
-    {{#if message}}
-      <p class="success-message">{{message}}</p>
-    {{/if}}
-    <button type="submit" class="btn btn-primary">Log in</button>
-    <a href="/authenticate/google" class="btn btn-primary">Login with Google</a>
-     <a href="/authenticate/facebook" class="btn btn-primary">Login with Facebook</a>
-  </form>
-</div>
+            <div class="col-lg-12 loginbttm">
+              <div class="col-lg-6 login-btm login-text">
+                {{#if error}}
+                <p class="error-message">{{error}}</p>
+                {{/if}}
+                {{#if message}}
+                <p class="success-message">{{message}}</p>
+                {{/if}}
+              </div>
+              <div class="col-lg-6 login-btm login-button">
+                <button type="submit" class="btn btn-primary">Sing In</button>
+              </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-2"></div>
+    </div>
+  </div>
