@@ -32,4 +32,7 @@ router.post("/logout", secure.isAuthenticated, usersController.logout);
 router.get("/profile", secure.isAuthenticated, usersController.profile);
 
 
+
+
+
 module.exports = router;

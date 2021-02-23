@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
-
+const TwitterStrategy = require('passport-twitter').Strategy;
 const User = require('../models/User.model')
 
 passport.serializeUser((user, next) => {
@@ -53,42 +53,40 @@ passport.use('local-auth', new LocalStrategy({
 }))
 
 passport.use(
-  "facebook-auth",
-  new FacebookStrategy(
-    {
-      clientID: process.env.FACEBOOK_APP_ID,
-      clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL:
-        process.env.FACEBOOK_REDIRECT_URI || "/authenticate/facebook/cb",
-    },
-    (accessToken, refreshToken, profile, next) => {
-      const facebookID = profile.id;
-      //const email = profile.email;
+    "facebook-auth",
+    new FacebookStrategy({
+            clientID: process.env.FACEBOOK_APP_ID,
+            clientSecret: process.env.FACEBOOK_APP_SECRET,
+            callbackURL: process.env.FACEBOOK_REDIRECT_URI || "/authenticate/facebook/cb",
+        },
+        (accessToken, refreshToken, profile, next) => {
+            const facebookID = profile.id;
+            //const email = profile.email;
 
-      if (facebookID) {
-        User.findOne({ "social.facebook": facebookID })
-          .then((user) => {
-            if (!user) {
-              User.create({
-                email: "hola@prueba.com",
-                password: "Aa1" + mongoose.Types.ObjectId(),
-                social: {
-                  facebook: facebookID,
-                },
-                active: true,
-              }).then((newUser) => {
-                next(null, newUser);
-              });
+            if (facebookID) {
+                User.findOne({ "social.facebook": facebookID })
+                    .then((user) => {
+                        if (!user) {
+                            User.create({
+                                email: "hola@prueba.com",
+                                password: "Aa1" + mongoose.Types.ObjectId(),
+                                social: {
+                                    facebook: facebookID,
+                                },
+                                active: true,
+                            }).then((newUser) => {
+                                next(null, newUser);
+                            });
+                        } else {
+                            next(null, user);
+                        }
+                    })
+                    .catch(next);
             } else {
-              next(null, user);
+                next(null, null, { error: "Error connecting with Facebook" });
             }
-          })
-          .catch(next);
-      } else {
-        next(null, null, { error: "Error connecting with Facebook" });
-      }
-    }
-  )
+        }
+    )
 );
 
 

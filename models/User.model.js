@@ -38,6 +38,7 @@ const userSchema = new mongoose.Schema({
     social: {
         google: String,
         facebook: String,
+        twitter: String,
     },
 
     activationToken: {

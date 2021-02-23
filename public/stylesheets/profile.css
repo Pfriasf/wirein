@@ -1,0 +1,107 @@
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            .profile {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .profile-form {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .avatarWrapper {
+                position: relative;
+                margin-top: 2.5em;
+                width: 258px;
+                margin-left: 2.5em;
+            }
+            
+            img {
+                border-radius: 100%;
+                width: 100px;
+                margin-left: 8px;
+                border: 2px solid #e7a9ff;
+            }
+            
+            .fa-cloud-upload {
+                display: inline-block;
+                line-height: 100px;
+                font-size: 25px;
+                /*height: 200px;
+                width: 200px;*/
+                color: #e7a9ff;
+                position: absolute;
+                margin-top: 80px;
+                margin-left: 3.2em;
+            }
+            
+            .label-email {
+                padding-top: 15px;
+                padding-left: 12px;
+            }
+            
+            .profile-inputemail {
+                font-size: 1em !important;
+                padding-top: 5px;
+                padding-left: 50px;
+                color: #474b4e;
+            }
+            
+            .profile-box {
+                margin: auto;
+                width: 50% !important;
+                max-width: 390px !important;
+                /*margin-top: 75px;*/
+                height: auto;
+                background: #E6EEF8;
+                text-align: center;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+                position: absolute;
+                /*width: 290px !important;*/
+                filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                border-radius: 15px;
+                /*margin-left: 25rem;*/
+            }
+            
+            .profile-button {
+                padding-right: 0px;
+                text-align: right;
+                margin-bottom: 25px;
+                margin-left: 4em;
+            }
+            
+            .cursor-pointer {
+                cursor: pointer;
+            }
+            
+            .addphoto {
+                background-color: #e7a9ff !important;
+                border-color: #e7a9ff !important;
+                color: white !important;
+                border-radius: 16px;
+                letter-spacing: 1px;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                font-size: 10px;
+                font-weight: lighter;
+                padding: 5px;
+                text-align: right;
+                margin-left: 13em;
+            }
+            
+            input[type=file] {
+                filter: alpha(opacity=0);
+                opacity: 0;
+                outline: none;
+                cursor: inherit;
+                position: absolute;
+                border: none;
+                margin-top: 9px;
+                height: 100px;
+            }
