@@ -1,0 +1,59 @@
+               * {
+                   margin: 0;
+                   padding: 0;
+                   box-sizing: border-box;
+               }
+               
+               .register {
+                   display: flex;
+                   min-height: 90vh;
+                   align-items: center;
+                   justify-content: center;
+               }
+               
+               input[type=text] {
+                   background-color: #E6EEF8;
+                   border: none;
+                   border: 1px solid #90A4AE;
+                   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+                   border-radius: 15px;
+                   font-weight: lighter;
+                   outline: 0;
+                   padding-left: 10px;
+                   margin-bottom: 20px;
+                   color: #ECF0F5;
+                   /*margin-left: 1em;*/
+                   width: 98%;
+                   margin: 0.5rem;
+               }
+               
+               .register-box {
+                   /*margin-top: 75px;*/
+                   margin: auto;
+                   width: 50% !important;
+                   max-width: 390px !important;
+                   background: #E6EEF8;
+                   text-align: center;
+                   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+                   position: absolute;
+                   /*width: 390px !important;*/
+                   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                   border-radius: 15px;
+                   /*margin-left: 25rem;*/
+               }
+               /*.register-form {
+            margin-top: auto;
+            text-align: left;
+        }*/
+               
+               .form-group-register {
+                   margin-bottom: 20px;
+                   outline: 0px;
+                   margin-left: 2.7em;
+               }
+               
+               .form-text {
+                   font-size: 0.8em !important;
+                   text-align: center;
+                   padding-top: 0em !important;
+               }

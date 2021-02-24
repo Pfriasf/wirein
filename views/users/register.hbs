@@ -1,0 +1,121 @@
+<!-- <div class="registro">
+<div class="container">
+  <form action="/register" method="POST" class="login">
+    <div class="mb-3">
+      <label for="text" class="form-label">Username</label>
+      <input type="text" name="username" value="{{user.username}}"
+        class="form-control {{#if errors.username}}is-invalid{{/if}}" id="username" required>
+      {{#if errors.username}}
+      <div class="invalid-feedback">
+        {{errors.username}}
+      </div>
+      {{/if}}
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" name="email" value="{{user.email}}" class="form-control {{#if errors.email}}is-invalid{{/if}}"
+        id="email" required>
+      <div class="form-text">We don't share your email with anyone</div>
+      {{#if errors.email}}
+      <div class="invalid-feedback">
+        {{errors.email}}
+      </div>
+      {{/if}}
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" name="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password"
+        required>
+      <div class="form-text">Your password should contain at least one alphabet one numeric and should be 8 characters long</div>
+      {{#if errors.password}}
+      <div class="invalid-feedback">
+        {{errors.password}}
+      </div>
+      {{/if}}
+    </div>
+    <div class="mb-3">
+      <label for="repeatPassword" class="form-label">Repeat your password</label>
+      <input type="password" name="repeatPassword" class="form-control" id="repeatPassword" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</div> -->
+
+<div class="container">
+  <div class="row register">
+    <div class="col-lg-3 col-md-2"></div>
+    <div class="col-lg-6 col-md-8 register-box">
+      <div class="social">
+        <a id="google_login" class="circle google" href="/authenticate/google">
+          <i class="fa fa-google-plus fa-fw"></i>
+        </a>
+        <a id="facebook_login" class="circle facebook" href="/authenticate/facebook">
+          <i class="fa fa-facebook fa-fw"></i>
+        </a>
+        <a id="twitter_login" class="circle twitter" href="/">
+          <i class="fab fa-twitter fa-fw"></i>
+        </a>
+      </div>
+      <div class="col-lg-10 register-form">
+        <div class="col-lg-12 register-form">
+          <form action="/register" method="POST">
+            <div class="form-group-register">
+              <label class="form-control-label">USERNAME</label>
+              <input type="text" name="username" value="{{user.username}}"
+                class="form-control {{#if errors.username}}is-invalid{{/if}}" id="username"
+                placeholder="Your name &#x1F609;" required>
+              {{#if errors.username}}
+              <div class="invalid-feedback">
+                {{errors.username}}
+              </div>
+              {{/if}}
+            </div>
+            <div class="form-group-register">
+              <label class="form-control-label">EMAIL</label>
+              <input type="email" name="email" value="{{user.email}}"
+                class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email"
+                placeholder="example@example.com &#x1F4E7;" required>
+            <!-- <div class="form-text">We don't share your email with anyone</div> -->
+              {{#if errors.email}}
+              <div class="invalid-feedback">
+                {{errors.email}}
+              </div>
+              {{/if}}
+            </div>
+            <div class="form-group-register">
+              <label class="form-control-label">PASSWORD</label>
+              <input type="password" name="password" class="form-control {{#if errors.password}}is-invalid{{/if}}"
+                placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679; &#x1F512" id="password" required>
+              <div class="form-text">Should contain at least one alphabet one numeric and should be 8
+                characters long</div>
+              {{#if errors.password}}
+              <div class="invalid-feedback">
+                {{errors.password}}
+              </div>
+              {{/if}}
+            </div>
+            <div class="form-group-register">
+              <label for="repeatPassword" class="form-control-label">REPEAT PASSWORD</label>
+              <input type="password" name="repeatPassword" class="form-control"
+                placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679; &#x1F512" id="repeatPassword" required>
+            </div>
+
+            <div class="col-lg-12 loginbttm">
+              <div class="col-lg-6 login-btm login-text">
+                {{#if error}}
+                <p class="error-message">{{error}}</p>
+                {{/if}}
+                {{#if message}}
+                <p class="success-message">{{message}}</p>
+                {{/if}}
+              </div>
+              <div class="col-lg-6 login-btm login-button">
+                <button type="submit" class="btn btn-primary">Start!</button>
+              </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-2"></div>
+    </div>
+  </div>

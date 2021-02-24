@@ -1,0 +1,190 @@
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                
+                .login {
+                    display: flex;
+                    min-height: 90vh;
+                    align-items: center;
+                    justify-content: center;
+                }
+                
+                .login-box {
+                    margin: auto;
+                    width: 50% !important;
+                    max-width: 390px !important;
+                    /*margin-top: 75px;*/
+                    height: auto;
+                    background: #E6EEF8;
+                    text-align: center;
+                    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+                    position: absolute;
+                    /*width: 290px !important;*/
+                    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                    border-radius: 15px;
+                    /*margin-left: 25rem;*/
+                }
+                /*.login-form {
+                        margin-top: 25px;
+                        text-align: left;
+                    }*/
+                
+                input[type=email] {
+                    background-color: #E6EEF8;
+                    border: none;
+                    border: 1px solid #90A4AE;
+                    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+                    border-radius: 15px;
+                    font-weight: lighter;
+                    outline: 0;
+                    margin-bottom: 20px;
+                    padding-left: 10px;
+                    /*margin-left: 1em;
+                width: 98%;*/
+                    width: 98%;
+                    margin: 0.5rem;
+                }
+                
+                input[type=password] {
+                    background-color: #E6EEF8;
+                    border: none;
+                    border: 1px solid #90A4AE;
+                    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+                    border-radius: 15px;
+                    font-weight: lighter;
+                    outline: 0;
+                    padding-left: 10px;
+                    margin-bottom: 20px;
+                    color: #ECF0F5;
+                    /*margin-left: 1em;
+                    width: 98%;*/
+                    width: 98%;
+                    margin: 0.5rem;
+                }
+                
+                .form-group {
+                    margin-bottom: 40px;
+                    outline: 0px;
+                    margin-left: 2.7em;
+                }
+                
+                .form-control:focus {
+                    border-color: inherit;
+                    -webkit-box-shadow: none;
+                    box-shadow: none;
+                    border-bottom: 2px solid #0DB8DE;
+                    outline: 0;
+                    background-color: #E6EEF8;
+                    color: #ECF0F5;
+                }
+                
+                input:focus {
+                    outline: none;
+                    box-shadow: 0 0 0;
+                }
+                
+                label {
+                    margin-bottom: 0px;
+                }
+                
+                .form-control-label {
+                    font-size: 10px;
+                    color: #6C6C6C;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                    margin-left: 1.5em;
+                }
+                
+                .btn-primary {
+                    background-color: #8728FF !important;
+                    border-color: #8728FF !important;
+                    color: white !important;
+                    border-radius: 16px;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                }
+                
+                .btn-primary:hover {
+                    background-color: rgba(255, 26, 67, 0.87) 86.84%;
+                    right: 0px;
+                }
+                
+                .login-btm {
+                    float: left;
+                }
+                
+                .login-button {
+                    padding-right: 0px;
+                    text-align: right;
+                    margin-bottom: 25px;
+                    margin-left: 4em;
+                }
+                
+                .login-text {
+                    text-align: left;
+                    padding-left: 0px;
+                    color: #A2A4A4;
+                }
+                
+                .loginbttm {
+                    padding: 0px;
+                }
+                
+                 ::-webkit-input-placeholder {
+                    text-align: center;
+                }
+                
+                .social {
+                    float: none;
+                    margin: 0 auto 30px;
+                    text-align: center;
+                }
+                
+                .social .circle {
+                    background-color: #EEEEEE;
+                    color: #8728FF;
+                    border-radius: 50%;
+                    display: inline-block;
+                    margin: 0 17px;
+                    padding: 10px;
+                    margin-top: 2.5em;
+                }
+                
+                .circle .fa {
+                    font-size: 16px;
+                    color: #8728FF;
+                }
+                
+                .social .facebook {
+                    background-color: #E6EEF8;
+                    color: #FFFFFF;
+                    box-shadow: -4px -4px 12px rgba(253, 255, 255, 0.8), 4px 4px 12px rgba(187, 195, 206, 0.6);
+                }
+                
+                .social .google {
+                    background-color: #E6EEF8;
+                    box-shadow: -4px -4px 12px rgba(253, 255, 255, 0.8), 4px 4px 12px rgba(187, 195, 206, 0.6);
+                }
+                
+                .social .twitter {
+                    background-color: #E6EEF8;
+                    box-shadow: -4px -4px 12px rgba(253, 255, 255, 0.8), 4px 4px 12px rgba(187, 195, 206, 0.6);
+                }
+                
+                .facebook:hover {
+                    animation: rotate 1.2s linear reverse infinite;
+                    background: #e7a9ff;
+                }
+                
+                .google:hover {
+                    animation: rotate 1.2s linear reverse infinite;
+                    background: #e7a9ff;
+                }
+                
+                .twitter:hover {
+                    animation: rotate 1.2s linear reverse infinite;
+                    background: #e7a9ff;
+                }

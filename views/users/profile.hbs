@@ -1,0 +1,66 @@
+<!--<div class="perfil">
+    <div class='container'>
+        <h1>We are glad to see you again!</h1>
+        <h2>{{currentUser.username}}</h2>
+        <p class="data">Your data session: </p>
+        <div id="info">
+            <ul>
+                <li>Tu usuario es: {{currentUser.username}}</li>
+                <li>Tu email es: {{currentUser.email}}</li>
+            </ul>
+            <div>
+                <a class="btn btn-profile btn-primary sm-col my-3" href="/main" role="button">Main Page</a>
+                <a class="btn btn-profile btn-primary sm-col my-3" href="/private" role="button">Private page</a>
+
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="row profile">
+        <div class="col-lg-3 col-md-2">
+            <div class="col-lg-6 col-md-8 profile-box">
+                <div class="profilepicture">
+
+
+                    <div class="avatarWrapper">
+                        <div class="avatar cursor-pointer">
+                            <div class="uploadOverlay"><span class="fa fa-cloud-upload"></span>
+                             <input type="file">
+
+
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/20625/avatar-bg.png">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-lg-10 profile-form">
+                    <div class="col-lg-12 profile-form">
+                        <form action="/profile" method="POST">
+                            <div class="label-email">
+                                <label for="username" class="form-control-label">EMAIL</label>
+                            </div>
+                            <h6 class="profile-inputemail">{{currentUser.email}}</h6>
+
+                            <div class="form-group">
+                                <label for="username" class="form-control-label">USERNAME</label>
+                                <input type="text" minlength="2" maxlength="15" name="username" class="form-control"
+                                    placeholder="Username">
+                            </div>
+                            <div class="col-lg-6 login-btm profile-button">
+                                <button type="submit" class="btn btn-primary">Save!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+    </div>
+</div>
