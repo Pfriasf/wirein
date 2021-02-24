@@ -205,7 +205,7 @@ module.exports.generateTemplate = (token) => {
           >
             <a
             href="${process.env.HOST || `http://localhost:${process.env.PORT || 3003}`}/activate/${token}"
-               style="display:inline-block;background:#9acd32;color:#ff0a4d;font-family:open Sans Helvetica, Arial, sans-serif;font-size:22px;font-weight:bold;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:10px;"
+               style="display:inline-block;background:#8728FF;color:#ff0a4d;font-family:open Sans Helvetica, Arial, sans-serif;font-size:22px;font-weight:bold;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:10px;"
             >
               Verify me!
             </a>
