@@ -25,7 +25,7 @@ router.get("/activate/:token", secure.isNotAuthenticated, usersController.activa
 router.get('/authenticate/google', passport.authenticate('google-auth', { scope: GOOGLE_SCOPES }))
 router.get('/authenticate/google/cb', usersController.doLoginGoogle)
 
-router.get("/authenticate/facebook", passport.authenticate("facebook-auth", { scope: ["email"] }));
+router.get("/authenticate/facebook", passport.authenticate("facebook-auth", { scope: "email" }));
 router.get("/authenticate/facebook/cb", usersController.doLoginFacebook);
 
 router.post("/logout", secure.isAuthenticated, usersController.logout);
