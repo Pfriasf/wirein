@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const passport = require('passport')
 const User = require("../models/User.model");
-const { sendActivationEmail } = require("../config/mailer.config");
+const {
+    sendActivationEmail
+} = require("../config/mailer.config");
 
 
 module.exports.register = (req, res, next) => {
@@ -29,7 +31,7 @@ module.exports.doRegister = (req, res, next) => {
             } else {
                 User.findOne({
                         email: req.body.email
-                            // username: req.body.username
+                        // username: req.body.username
                     })
                     .then((user) => {
                         if (user) {
@@ -71,7 +73,10 @@ module.exports.doLogin = (req, res, next) => {
         if (error) {
             next(error);
         } else if (!user) {
-            res.status(400).render('users/login', { user: req.body, error: validations.error });
+            res.status(400).render('users/login', {
+                user: req.body,
+                error: validations.error
+            });
         } else {
             req.login(user, loginErr => {
                 if (loginErr) next(loginErr)
@@ -86,7 +91,10 @@ module.exports.doLoginGoogle = (req, res, next) => {
         if (error) {
             next(error);
         } else if (!user) {
-            res.status(400).render('users/login', { user: req.body, error: validations });
+            res.status(400).render('users/login', {
+                user: req.body,
+                error: validations
+            });
         } else {
             req.login(user, loginErr => {
                 if (loginErr) next(loginErr)
@@ -97,21 +105,23 @@ module.exports.doLoginGoogle = (req, res, next) => {
 }
 
 module.exports.doLoginFacebook = (req, res, next) => {
-passport.authenticate("facebook-auth", (error, user, validations) => {
-    console.log(validations)
-    if (error) {
-        next(error);
-    } else if (!user) {
-    res
-      .status(400)
-      .render("users/login", { error: validations.error });
-  } else {
-    req.login(user, (loginErr) => {
-      if (loginErr) next(loginErr);
-      else res.redirect("/");
-    });
-  }
-})(req, res, next);
+    passport.authenticate("facebook-auth", (error, user, validations) => {
+        console.log(validations)
+        if (error) {
+            next(error);
+        } else if (!user) {
+            res
+                .status(400)
+                .render("users/login", {
+                    error: validations.error
+                });
+        } else {
+            req.login(user, (loginErr) => {
+                if (loginErr) next(loginErr);
+                else res.redirect("/");
+            });
+        }
+    })(req, res, next);
 }
 
 module.exports.logout = (req, res, next) => {
@@ -129,7 +139,13 @@ module.exports.profile = (req, res, next) => {
 
 
 module.exports.activate = (req, res, next) => {
-    User.findOneAndUpdate({ activationToken: req.params.token, active: false }, { active: true, activationToken: "active" })
+    User.findOneAndUpdate({
+            activationToken: req.params.token,
+            active: false
+        }, {
+            active: true,
+            activationToken: "active"
+        })
         .then((u) => {
             if (u) {
                 res.render("users/login", {
