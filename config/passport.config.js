@@ -17,6 +17,8 @@ passport.deserializeUser((id, next) => {
         .catch(next);
 });
 
+//local 
+
 passport.use(
     "local-auth",
     new LocalStrategy({
@@ -55,6 +57,8 @@ passport.use(
     )
 );
 
+//facebook
+
 passport.use(
     "facebook-auth",
     new FacebookStrategy({
@@ -66,43 +70,37 @@ passport.use(
         (accessToken, refreshToken, profile, next) => {
             const facebookID = profile.id;
             const email = profile.emails[0].value;
+            const username = profile.username ? profile.username : email.split("@")[0]
 
             if (facebookID && email) {
-                User.findOne({
-                  $or: [
-                    {
-                      email: email,
-                    },
-                    {
-                      "social.google": facebookID,
-                    },
-                  ],
-                })
-                  .then((user) => {
-                    if (!user) {
-                      User.create({
-                        email: email,
-                        password: "Aa1" + mongoose.Types.ObjectId(),
-                        social: {
-                          facebook: facebookID,
-                        },
-                        active: true,
-                      }).then((newUser) => {
-                        next(null, newUser);
-                      });
-                    } else {
-                      next(null, user);
-                    }
-                  })
-                  .catch(next);
+                User.findOne({ $or: [{ email: email }, { "social.facebook": facebookID }] })
+                    .then((user) => {
+                        if (!user) {
+                            User.create({
+                              username,
+                              email: email,
+                              password: "Aa1" + mongoose.Types.ObjectId(),
+                              social: {
+                                facebook: facebookID,
+                              },
+                              active: true,
+                              activationToken: "active",
+                            }).then((newUser) => {
+                              next(null, newUser);
+                            });
+                        } else {
+                            next(null, user);
+                        }
+                    })
+                    .catch(next);
             } else {
-                next(null, null, {
-                    error: "Error connecting with Facebook"
-                });
+                next(null, null, { error: "Error connecting with Facebook" });
             }
         }
     )
 );
+
+//google
 
 passport.use(
     "google-auth",
@@ -114,26 +112,22 @@ passport.use(
         (accessToken, refreshToken, profile, next) => {
             const googleID = profile.id;
             const email = profile.emails[0] ? profile.emails[0].value : undefined;
+            const username = profile.name.givenName+profile.name.familyName+ Math.floor(10 + Math.random() * 90)
+            
 
             if (googleID && email) {
-                User.findOne({
-                        $or: [{
-                                email: email,
-                            },
-                            {
-                                "social.google": googleID,
-                            },
-                        ],
-                    })
+                User.findOne({ $or: [{ email: email }, { "social.google": googleID }] })
                     .then((user) => {
                         if (!user) {
                             const newUserInstance = new User({
-                                email,
-                                password: "Aa1" + mongoose.Types.ObjectId(),
-                                social: {
-                                    google: googleID,
-                                },
-                                active: true,
+                              username,
+                              email,
+                              password: "Aa1" + mongoose.Types.ObjectId(),
+                              social: {
+                                google: googleID,
+                              },
+                              active: true,
+                              activationToken: "active",
                             });
 
                             return newUserInstance
@@ -145,10 +139,57 @@ passport.use(
                     })
                     .catch(next);
             } else {
-                next(null, null, {
-                    error: "Error connecting with Google OAuth",
-                });
+                next(null, null, { error: "Error connecting with Google OAuth" });
             }
         }
     )
 );
+
+//twitter 
+
+passport.use(
+  "twitter-auth",
+  new TwitterStrategy(
+    {
+      consumerKey: process.env.TWITTER_CONSUMER_KEY,
+      consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+      callbackURL: process.env.TWITTER_REDIRECT_URI || "/authenticate/twitter/cb",
+      includeEmail: true,
+    },
+    (accessToken, refreshToken, profile, next) => {
+      const twitterID = profile.id;
+      const email = profile.emails[0].value;
+      const username = profile.username;
+
+      if (twitterID && email) {
+        User.findOne({
+          $or: [{ email: email }, { "social.twitter": twitterID }],
+        })
+          .then((user) => {
+            if (!user) {
+              const newUserInstance = new User({
+                username,
+                email,
+                password: "Aa1" + mongoose.Types.ObjectId(),
+                social: {
+                  twitter: twitterID,
+                },
+                active: true,
+                activationToken: "active",
+              });
+
+              return newUserInstance
+                .save()
+                .then((newUser) => next(null, newUser));
+            } else {
+              next(null, user);
+            }
+          })
+          .catch(next);
+      } else {
+        next(null, null, { error: "Error connecting with Twitter OAuth" });
+      }
+    }
+  )
+);
+
