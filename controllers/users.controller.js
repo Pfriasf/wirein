@@ -110,10 +110,26 @@ module.exports.doLoginFacebook = (req, res, next) => {
         if (error) {
             next(error);
         } else if (!user) {
-            res
-                .status(400)
-                .render("users/login", {
-                    error: validations.error
+            res.status(400).render("users/login", {
+                error: validations.error
+                });
+        } else {
+            req.login(user, (loginErr) => {
+                if (loginErr) next(loginErr);
+                else res.redirect("/");
+            });
+        }
+    })(req, res, next);
+}
+
+module.exports.doLoginTwitter = (req, res, next) => {
+    passport.authenticate("twitter-auth", (error, user, validations) => {
+        console.log(validations)
+        if (error) {
+            next(error);
+        } else if (!user) {
+            res.status(400).render("users/login", {
+                error: validations.error
                 });
         } else {
             req.login(user, (loginErr) => {
