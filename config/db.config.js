@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect("mongodb://localhost/wirein", {
+  .connect("mongodb://localhost/wiredin", {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
