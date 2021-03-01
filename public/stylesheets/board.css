@@ -8,19 +8,118 @@
     }
     
     .boards {
-        background: #E6EEF8;
+        /*background: #E6EEF8;*/
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
         border-radius: 15px;
     }
     
     .card-title {
-        color: white
+        color: white;
+        font-weight: bold;
     }
     
     .one {
-        background-color: #B9DF32;
+        width: 192px;
+        height: 143px;
+        background: #0A212E;
+        margin: 0px;
+        overflow: hidden;
+        animation: color-loop 18s infinite;
     }
     
     .two {
-        background-color: #32DBDF;
+        width: 192px;
+        height: 143px;
+        background: #32DBDF;
+        margin: 0px;
+        overflow: hidden;
+        animation: color-loop 18s infinite;
+    }
+    
+    @keyframes color-loop {
+        0% {
+            background: #2CAB5B;
+        }
+        25% {
+            background: #FABC03;
+        }
+        50% {
+            background: #ED4B40;
+        }
+        75% {
+            background: #4286F3;
+        }
+        100% {
+            background: #2CAB5B;
+        }
+    }
+    
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+    
+    .card-perspective {
+        perspective: 700px;
+        /*You can change the origin if you want e.g. perspective-origin: top;*/
+    }
+    
+    .card-perspective::before {
+        transform: rotateY(-15deg) translateX(16px);
+    }
+    
+    .card-perspective::after {
+        transform: rotateY(-15deg) translateX(32px);
+    }
+    
+    .card-perspective .card-inner {
+        transform: rotateY(-15deg);
+    }
+    
+    .card-perspective:hover::before {
+        transform: rotateY(15deg) translateX(-16px);
+    }
+    
+    .card-perspective:hover::after {
+        transform: rotateY(15deg) translateX(-32px);
+    }
+    
+    .card-perspective:hover .card-inner {
+        transform: rotateY(15deg);
+    }
+    
+    .card {
+        position: relative;
+        cursor: pointer;
+        max-width: 192px;
+        margin: 60px auto;
+    }
+    
+    .card::before,
+    .card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .card::before,
+    .card::after,
+    .card .card-inner {
+        /* background-color: var(--card-bg-color);*/
+        border: 1px solid var(--card-border-color);
+        border-radius: 5px;
+        transition: transform 0.3s;
+    }
+    
+    .card::before,
+    .card-inner {
+        z-index: 1;
+    }
+    
+    .card-inner {
+        position: relative;
+        padding: 3rem;
     }
