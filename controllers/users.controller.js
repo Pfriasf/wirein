@@ -110,9 +110,7 @@ module.exports.doLoginFacebook = (req, res, next) => {
         if (error) {
             next(error);
         } else if (!user) {
-            res.status(400).render("users/login", {
-                error: validations.error
-                });
+            res.status(400).render("users/login", { error: validations.error });
         } else {
             req.login(user, (loginErr) => {
                 if (loginErr) next(loginErr);
@@ -148,7 +146,7 @@ module.exports.logout = (req, res, next) => {
 
 
 module.exports.profile = (req, res, next) => {
-
+    debugger
     res.render('users/profile')
 };
 
@@ -174,3 +172,26 @@ module.exports.activate = (req, res, next) => {
         })
         .catch((e) => next(e));
 };
+
+// Para guardar y editar el perfil
+module.exports.updateProfile = (req, res, next) => {
+
+    console.log(req.body)
+    console.log("username", req.body.username)
+    const upDates = {
+        username: req.body.username,
+        birthday: req.body.birthday
+    }
+    console.log(req.file)
+    if (req.file) {
+
+        upDates.image = req.file.path;
+    }
+
+    User.findOneAndUpdate({ email: req.currentUser.email }, upDates)
+        .then((user) => {
+            res.redirect('/product')
+        })
+
+    .catch((e) => console.log("error", error))
+}

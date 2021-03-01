@@ -5,7 +5,7 @@
                }
                
                .register {
-                   display: flex;
+                   display: block;
                    min-height: 90vh;
                    align-items: center;
                    justify-content: center;
@@ -21,7 +21,7 @@
                    outline: 0;
                    padding-left: 10px;
                    margin-bottom: 20px;
-                   color: #ECF0F5;
+                   color: black;
                    /*margin-left: 1em;*/
                    width: 98%;
                    margin: 0.5rem;

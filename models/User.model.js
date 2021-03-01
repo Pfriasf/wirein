@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+mongoose.set("useFindAndModify", true);
+
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 
@@ -42,7 +44,15 @@ const userSchema = new mongoose.Schema(
       facebook: String,
       twitter: String,
     },
+    
+    image: {
+        type: String
+    },
 
+    birthday: {
+        type: Date
+    },
+    
     activationToken: {
       type: String,
       default: () => {

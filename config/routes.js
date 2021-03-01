@@ -4,6 +4,7 @@ const miscController = require("../controllers/misc.controller")
 const usersController = require('../controllers/users.controller')
 const secure = require("../middlewares/secure.middleware");
 
+const upload = require('./storage.config')
 
 const GOOGLE_SCOPES = ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile']
 
@@ -32,7 +33,14 @@ router.get("/authenticate/twitter/cb", usersController.doLoginTwitter);
 
 router.post("/logout", secure.isAuthenticated, usersController.logout);
 router.get("/profile", secure.isAuthenticated, usersController.profile);
+router.post("/profile", secure.isAuthenticated, upload.single("image"), usersController.updateProfile);
 
+
+router.post("/product", secure.isAuthenticated);
+
+router.get('/product', (req, res, next) => {
+    res.render("users/board")
+});
 
 
 
