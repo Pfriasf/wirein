@@ -1,4 +1,13 @@
+@import url("./components/register.css");
+@import url("./components/profile.css");
+@import url("./components/product.css");
+@import url("./components/login.css");
+@import url("./components/layout.css");
+@import url("./components/index.css");
+@import url("./components/chat.css");
+@import url("./components/board.css");
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
 body {
     font-family: 'Roboto', sans-serif;
     width: 100vw;

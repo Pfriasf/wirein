@@ -71,7 +71,7 @@ passport.use(
     (accessToken, refreshToken, profile, next) => {
       const facebookID = profile.id;
       const email = profile.emails[0].value;
-      const username = profile.username ? profile.username : email.split("@")[0]
+      const username = profile.username ? profile.username : email.split("@")[0] + Math.floor(10 + Math.random() * 90)
 
       if (facebookID && email) {
         User.findOne({
