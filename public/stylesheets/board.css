@@ -1,0 +1,26 @@
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+    h2,
+    .board {
+        text-align: center;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        padding-bottom: 2em;
+    }
+    
+    .boards {
+        background: #E6EEF8;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        border-radius: 15px;
+    }
+    
+    .card-title {
+        color: white
+    }
+    
+    .one {
+        background-color: #B9DF32;
+    }
+    
+    .two {
+        background-color: #32DBDF;
+    }

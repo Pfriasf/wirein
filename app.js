@@ -8,7 +8,10 @@ const logger = require('morgan');
 const router = require("./config/routes")
 const path = require("path");
 const passport = require('passport');
+const bodyParser = require('body-parser');
 const session = require("./config/session.config");
+const upload = require('./config/storage.config')
+
 
 
 require("./config/db.config");
@@ -32,6 +35,9 @@ app.use(logger('dev'));
 app.use(session);
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));

@@ -21,45 +21,49 @@
     <div class="row profile">
         <div class="col-lg-3 col-md-2">
             <div class="col-lg-6 col-md-8 profile-box">
-                <div class="profilepicture">
+                <form action="/profile" method="POST" enctype="multipart/form-data">
+                    <div class="col-lg-10 profile-form">
+                        <div class="col-lg-12 profile-form">
 
-
-                    <div class="avatarWrapper">
-                        <div class="avatar cursor-pointer">
-                            <div class="uploadOverlay"><span class="fa fa-cloud-upload"></span>
-                             <input type="file">
-
-
-                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/20625/avatar-bg.png">
-
+                            <div class="profilepicture">
+                                <div class="avatarWrapper">
+                                    <div class="avatar cursor-pointer">
+                                        <div class="uploadOverlay"><span id="btn-foto" class="fa fa-cloud-upload" onclick="document.getElementById('file').click()"></span>
+                                           <input type="file" onchange="readURL(this, 'user-photo')" id="file" name="image" hidden>
+                                            {{#if currentUser.image}}
+                                            <img id="user-photo" src="{{currentUser.image}}">
+                                            {{else}}
+                                            <img id="user-photo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/20625/avatar-bg.png">
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-                <div class="col-lg-10 profile-form">
-                    <div class="col-lg-12 profile-form">
-                        <form action="/profile" method="POST">
-                            <div class="label-email">
-                                <label for="username" class="form-control-label">EMAIL</label>
-                            </div>
-                            <h6 class="profile-inputemail">{{currentUser.email}}</h6>
 
                             <div class="form-group">
+                                <label for="email" class="form-control-label">EMAIL</label>
+                                <h4 class="emailprofile">{{currentUser.email}}</h4>
+                               <!-- <input value="{{currentUser.email}}" minlength="2" maxlength="15" name="e-mail"
+                                    id="e-mail" class="form-control" disabled> -->
+                            </div>
+                            <div class="form-group">
                                 <label for="username" class="form-control-label">USERNAME</label>
-                                <input type="text" minlength="2" maxlength="15" name="username" class="form-control"
+                                <input value="{{currentUser.username}}" type="text" minlength="2" maxlength="15" name="username" class="form-control"
                                     placeholder="Username">
                             </div>
+                            <!-- <div class="form-group">
+                                <label for="birthday" class="form-control-label">Birthday</label>
+                                <input  value="{{currentUser.birthday}}" type="date" id="birthday" minlength="2" maxlength="15" name="birthday"
+                                    class="form-control">
+                            </div> -->
                             <div class="col-lg-6 login-btm profile-button">
                                 <button type="submit" class="btn btn-primary">Save!</button>
                             </div>
-                        </form>
+
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-2"></div>
+                </form>
+                <div class="col-lg-3 col-md-2">   </div>
             </div>
         </div>
     </div>
