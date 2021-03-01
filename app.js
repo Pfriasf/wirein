@@ -28,9 +28,8 @@ const User = require('./models/User.model')
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-//app.use(express.static("public"));
+app.use(express.static("public"));
 
-app.use('/public', express.static(__dirname + '/public')); // este es el que me sirve a mi
 app.use(logger('dev'));
 app.use(session);
 app.use(passport.initialize());

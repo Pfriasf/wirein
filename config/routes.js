@@ -1,4 +1,3 @@
-const express = require('express');
 const passport = require('passport')
 const router = require("express").Router();
 const miscController = require("../controllers/misc.controller")
@@ -26,8 +25,11 @@ router.get("/activate/:token", secure.isNotAuthenticated, usersController.activa
 router.get('/authenticate/google', passport.authenticate('google-auth', { scope: GOOGLE_SCOPES }))
 router.get('/authenticate/google/cb', usersController.doLoginGoogle)
 
-router.get("/authenticate/facebook", passport.authenticate("facebook-auth", { scope: ["email"] }));
+router.get("/authenticate/facebook", passport.authenticate("facebook-auth", { scope: "email" }));
 router.get("/authenticate/facebook/cb", usersController.doLoginFacebook);
+
+router.get("/authenticate/twitter", passport.authenticate("twitter-auth"));
+router.get("/authenticate/twitter/cb", usersController.doLoginTwitter);
 
 router.post("/logout", secure.isAuthenticated, usersController.logout);
 router.get("/profile", secure.isAuthenticated, usersController.profile);
