@@ -83,5 +83,11 @@ userSchema.pre("save", function (next) {
   }
 });
 
+userSchema.virtual("services", {
+    ref: "Service",
+    localField: "_id",
+    foreignField: "seller"
+})
+
 const User = mongoose.model("User", userSchema);
 module.exports = User;
