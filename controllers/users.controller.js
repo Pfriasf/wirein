@@ -31,7 +31,7 @@ module.exports.doRegister = (req, res, next) => {
             } else {
                 User.findOne({
                         email: req.body.email
-                        // username: req.body.username
+                            // username: req.body.username
                     })
                     .then((user) => {
                         if (user) {
@@ -128,7 +128,7 @@ module.exports.doLoginTwitter = (req, res, next) => {
         } else if (!user) {
             res.status(400).render("users/login", {
                 error: validations.error
-                });
+            });
         } else {
             req.login(user, (loginErr) => {
                 if (loginErr) next(loginErr);

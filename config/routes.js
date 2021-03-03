@@ -5,6 +5,8 @@ const usersController = require('../controllers/users.controller')
 const serviceController = require("../controllers/service.controller")
 const secure = require("../middlewares/secure.middleware");
 
+const server = require('http').Server();
+const io = require('socket.io')(server);
 
 
 const upload = require('./storage.config')
@@ -43,12 +45,31 @@ router.post("/service", secure.isAuthenticated, serviceController.doCreate);
 
 
 
-router.get("/chat", function(req, res, next) {
-    res.render('/users/chat');
+router.get("/test", function(req, res, next) {
+    res.render("users/service");
 });
 
-router.get("/menu", function(req, res, next) {
-    res.render("/menu");
+
+io.sockets.on("connection", function(socket) {
+    socket.on("username", function(username) {
+        socket.username = username;
+        io.emit("is_online", "🔵 <i>" + socket.username + " se une al chat..</i>");
+    });
+
+    socket.on("disconnect", function(username) {
+        io.emit(
+            "is_online",
+            "🔴 <i>" + socket.username + " ha dejado el chat ..</i>"
+        );
+    });
+
+    socket.on("chat_message", function(message) {
+        io.emit(
+            "chat_message",
+            "<strong>" + socket.username + "</strong>: " + message
+        );
+    });
 });
+
 
 module.exports = router;
