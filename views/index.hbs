@@ -1,8 +1,12 @@
+{{#if currentUser}}
+    {{>board}}
+{{else}}
 <div class="home">
-<h1>{{title}}</h1>
-<p class="title">Welcome to {{title}}</p>
+    <h1>{{title}}</h1>
+    <p class="title">Welcome to {{title}}</p>
 </div>
 
 <div class="wiredin">
     <h1 class="supertitle">WiredIn</h1>
 </div>
+{{/if}}
