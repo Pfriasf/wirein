@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row login">
-    <div class="col-lg-3 col-md-2"></div>
-    <div class="col-lg-6 col-md-8 login-box">
+    <div class="d-flex flex-column justify-content-center align-items-center register-box">
+
       <div class="social">
         <a id="google_login" class="circle google" href="/authenticate/google">
           <i class="fa fa-google-plus fa-fw"></i>
@@ -13,8 +13,8 @@
           <i class="fab fa-twitter fa-fw"></i>
         </a>
       </div>
-      <div class="col-lg-10 login-form">
-        <div class="col-lg-12 login-form">
+      <div class="col-10">
+        <div class="col-lg-12">
           <form action="/login" method="POST">
             <div class="form-group">
               <label class="form-control-label">EMAIL</label>
@@ -36,12 +36,13 @@
                 <p class="success-message">{{message}}</p>
                 {{/if}}
               </div>
-              <div class="col-lg-6 login-btm login-button">
+              <div class="register-btm register-button">
                 <button type="submit" class="btn btn-primary">Sing In</button>
               </div>
+            </div>
           </form>
         </div>
       </div>
-      <div class="col-lg-3 col-md-2"></div>
     </div>
   </div>
+</div>
