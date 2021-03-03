@@ -5,6 +5,8 @@ const usersController = require('../controllers/users.controller')
 const serviceController = require("../controllers/service.controller")
 const secure = require("../middlewares/secure.middleware");
 
+
+
 const upload = require('./storage.config')
 
 const GOOGLE_SCOPES = ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile']
@@ -40,5 +42,13 @@ router.get("/service/create", secure.isAuthenticated, serviceController.create)
 router.post("/service", secure.isAuthenticated, serviceController.doCreate);
 
 
+
+router.get("/chat", function(req, res, next) {
+    res.render('/users/chat');
+});
+
+router.get("/menu", function(req, res, next) {
+    res.render("/menu");
+});
 
 module.exports = router;
