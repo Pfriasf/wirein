@@ -189,7 +189,7 @@ module.exports.updateProfile = (req, res, next) => {
 
     User.findOneAndUpdate({ email: req.currentUser.email }, upDates)
         .then((user) => {
-            res.redirect('/product')
+            res.redirect('/')
         })
 
     .catch((e) => console.log("error", error))

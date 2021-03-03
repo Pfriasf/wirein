@@ -122,11 +122,12 @@ passport.use(
       const googleID = profile.id;
       const email = profile.emails[0] ? profile.emails[0].value : undefined;
       const username = profile.name.givenName + profile.name.familyName + Math.floor(10 + Math.random() * 90)
-
+      const image = profile.photos[0] ? profile.photos[0].value : undefined;
+      
       if (googleID && email) {
         User.findOne({
-            $or: [{
-              email: email
+          $or: [{
+            email: email
             }, {
               "social.google": googleID
             }]
@@ -140,6 +141,7 @@ passport.use(
                 social: {
                   google: googleID,
                 },
+                image,
                 active: true,
                 activationToken: "active",
               });
@@ -147,7 +149,7 @@ passport.use(
               return newUserInstance
                 .save()
                 .then((newUser) => next(null, newUser));
-            } else {
+              } else {
               next(null, user);
             }
           })
@@ -159,7 +161,7 @@ passport.use(
       }
     }
   )
-);
+  );
 
 //twitter 
 
@@ -175,7 +177,10 @@ passport.use(
       const twitterID = profile.id;
       const email = profile.emails[0].value;
       const username = profile.username;
+      let image = profile.photos[0] ? profile.photos[0].value : undefined;
+      image = image.replace(/_normal\./, ".");
 
+      
       if (twitterID && email) {
         User.findOne({
             $or: [{
@@ -193,6 +198,7 @@ passport.use(
                 social: {
                   twitter: twitterID,
                 },
+                image,
                 active: true,
                 activationToken: "active",
               });
