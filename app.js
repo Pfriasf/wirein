@@ -28,7 +28,8 @@ const User = require('./models/User.model')
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static("public"));
+//app.use(express.static("public"));
+app.use('/public', express.static(__dirname + '/public'));
 
 app.use(logger('dev'));
 app.use(session);
@@ -46,7 +47,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-hbs.registerPartials(path.join(__dirname, "../views/partials"));
+hbs.registerPartials(path.join(__dirname, "./views/partials"));
 
 app.use((req, res, next) => {
     req.currentUser = req.user;

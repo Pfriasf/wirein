@@ -39,7 +39,7 @@ router.post("/profile", secure.isAuthenticated, upload.single("image"), usersCon
 router.post("/product", secure.isAuthenticated);
 
 router.get('/product', (req, res, next) => {
-    res.render("users/board")
+    res.render("users/menu")
 });
 
 

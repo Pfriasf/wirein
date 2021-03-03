@@ -1,62 +1,54 @@
 <div class="container">
     <div class="row product">
-        <div class="col-lg-3 col-md-2">
-            <div class="col-lg-6 col-md-8 product-box">
-                <form action="/product" method="POST">
-                    <div class="col-lg-10 product-form">
-                        <div class="col-lg-12 product-form">
-                            <div class="form-group">
-                                <label for="username" class="form-control-label">USERNAME</label>
-                                <h4>{{currentUser.username}}</h4>
-                               <!-- <input value="{{currentUser.username}}" minlength="2" maxlength="15" name="username"
+        <div class="d-flex flex-column justify-content-center align-items-center  product-box">
+            <form action="/product" method="POST">
+
+                <div class="productclass">
+                    <div class="form-group">
+                        <label for="username" class="form-control-label">USERNAME</label>
+                        <h4>{{currentUser.username}}</h4>
+                        <!-- <input value="{{currentUser.username}}" minlength="2" maxlength="15" name="username"
                                     id="username" class="form-control" disabled> -->
-                            </div>
-                            <div class="form-group select">
-                                <label for="exampleFormControlSelect1" class="form-control-label">STREAMING SERVICES
-                                    LIST</label>
 
-                                <select class="custom-select" id="exampleFormControlSelect1">
-                                    <option value="">Choose... &#x1F50E;</option>
-                                    <option value="Netflix">Netflix</option>
-                                    <option value="HBO GO">HBO GO</option>
-                                    <option value="Disney +">Disney+</option>
-                                    <option value="Spotify">Spotify</option>
-                                    <option value="Amazon Video">Amazon Video</option>
-                                    <option value="Movistar+">Movistar+</option>
-                                    <option value="Podimo">Podimo</option>
-                                </select>
 
-                            </div>
+                        <label for="exampleFormControlSelect1" class="form-control-label">STREAMING SERVICES
+                            LIST</label>
 
-                           <div class="form-group">
-                               <label class="form-control-label">PRICE</label>
-                               <input type="number" name="price" class="form-control"
-                                   placeholder="&#x1F4B3;"
-                                   id="price" required>
-                           </div>
+                        <select class="custom-select" id="exampleFormControlSelect1">
+                            <option value="">Choose... &#x1F50E;</option>
+                            <option value="Netflix">Netflix</option>
+                            <option value="HBO GO">HBO GO</option>
+                            <option value="Disney +">Disney+</option>
+                            <option value="Spotify">Spotify</option>
+                            <option value="Amazon Video">Amazon Video</option>
+                            <option value="Movistar+">Filmin</option>
+    
+                        </select>
 
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1" class="form-control-label">DESCRIPTION</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="&#x1F4DD;"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">USER ACCOUNT</label>
-                                <input type="email" name="email" value="{{user.email}}" class="form-control" id="email"
-                                    placeholder="&#x1F4E7;" required>
-                            
-                            
-                                <label class="form-control-label">PASSWORD ACCOUNT</label>
-                                <input type="password" name="password" class="form-control"
-                                    placeholder="&#x1F512"
-                                    id="password" required>
-                            </div>
-                            <div class="col-lg-6 login-btm profile-button">
-                                <button type="submit" class="btn btn-primary">Share!</button>
-                            </div>
-                        </div>
+                        <label class="form-control-label">PRICE</label>
+                        <input type="number" name="price" class="form-control" placeholder="&#x1F4B3;" id="price"
+                            required>
+
+                        <label for="exampleFormControlTextarea1" class="form-control-label">DESCRIPTION</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            placeholder="&#x1F4DD;"></textarea>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label">USER ACCOUNT</label>
+                    <input type="email" name="email" class="form-control" id="email"
+                        placeholder="&#x1F4E7;" required>
+
+
+                    <label class="form-control-label">PASSWORD ACCOUNT</label>
+                    <input type="password" name="password" class="form-control" placeholder="&#x1F512" id="password"
+                        required>
+                </div>
+                <div class="register-btm register-button">
+                    <button type="submit" class="btn btn-primary">Share!</button>
+                </div>
+            </form>
         </div>
     </div>
+
 </div>

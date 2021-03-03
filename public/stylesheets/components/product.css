@@ -6,7 +6,6 @@
 
 .product {
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
@@ -20,35 +19,12 @@
     margin: auto;
     width: 50% !important;
     max-width: 390px !important;
-    /*margin-top : 75px;*/
-    height: auto;
     background: #E6EEF8;
     text-align: center;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     position: absolute;
-    /*width      : 290px !important;*/
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 15px;
-    /*margin-left: 25rem;*/
-    padding-top: 1rem;
-}
-
-.select i {
-    position: absolute;
-    right: 20px;
-    top: calc(50% - 13px);
-    width: 16px;
-    height: 16px;
-    display: block;
-    border-left: 4px solid #2AC176;
-    border-bottom: 4px solid #2AC176;
-    transform: rotate(-45deg);
-    /* Giramos el cuadrado */
-    transition: all 0.25s ease;
-}
-
-.select:hover i {
-    margin-top: 3px;
 }
 
 textarea[id=exampleFormControlTextarea1] {
@@ -62,8 +38,6 @@ textarea[id=exampleFormControlTextarea1] {
     padding-left: 10px;
     margin-bottom: 20px;
     color: black;
-    /*margin-left: 1em;
-    width: 98%;*/
     width: 98%;
     margin: 0.5rem;
 }
@@ -80,8 +54,6 @@ select {
     padding-left: 10px;
     margin-bottom: 20px;
     color: black;
-    /*margin-left: 1em;
-    width: 98%;*/
     width: 98%;
     margin: 0.5rem;
 }
@@ -97,12 +69,14 @@ input[type=number] {
     padding-left: 10px;
     margin-bottom: 20px;
     color: black;
-    /*margin-left   : 1em;
-th               : 98%;*/
     width: 98%;
     margin: 0.5rem;
 }
 
 .custom-select {
     align-items: center;
+}
+
+.productclass {
+    margin-top: 2rem;
 }

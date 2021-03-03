@@ -7,13 +7,6 @@
 
 .profile {
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.profile-form {
-    display: block;
-    align-items: center;
     justify-content: center;
 }
 
@@ -21,11 +14,10 @@
     position: relative;
     margin-top: 2.5em;
     width: 258px;
-    margin-left: 2.5em;
     margin-bottom: 2em;
 }
 
-img {
+#user-photo {
     border-radius: 50%;
     width: 100px;
     max-width: 100px;
@@ -40,8 +32,6 @@ img {
     display: inline-block;
     line-height: 100px;
     font-size: 25px;
-    /*height   : 200px;
-                width          : 200px;*/
     color: #e7a9ff;
     position: absolute;
     margin-top: 80px;
@@ -53,34 +43,16 @@ img {
     padding-left: 12px;
 }
 
-.profile-inputemail {
-    font-size: 1em !important;
-    padding-top: 5px;
-    padding-left: 50px;
-    color: #474b4e;
-}
-
 .profile-box {
     margin: auto;
     width: 50% !important;
     max-width: 390px !important;
-    /*margin-top : 75px;*/
-    height: auto;
     background: #E6EEF8;
     text-align: center;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     position: absolute;
-    /*width      : 290px !important;*/
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 15px;
-    /*margin-left: 25rem;*/
-}
-
-.profile-button {
-    padding-right: 0px;
-    text-align: right;
-    margin-bottom: 25px;
-    margin-left: 4em;
 }
 
 .cursor-pointer {
@@ -109,8 +81,6 @@ input[type=date] {
     padding-left: 10px;
     margin-bottom: 20px;
     color: black;
-    /*margin-left   : 1em;
-                width               : 98%;*/
     width: 98%;
     margin: 0.5rem;
 }
@@ -123,15 +93,8 @@ input[name=e-mail] {
     padding-left: 10px;
     margin-bottom: 20px;
     color: #8728FF;
-    /*margin-left   : 1em;
-                width               : 98%;*/
     width: 98%;
     margin: 0.5rem;
-}
-
-.form-control:disabled,
-.form-control[readonly] {
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 h4,
@@ -139,4 +102,9 @@ h4,
     color: #8728FF;
     text-align: center;
     font-family: 'Roboto', sans-serif;
+}
+
+.formcontrolprueba {
+    width: 50%;
+    display: block;
 }
