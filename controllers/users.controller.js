@@ -176,7 +176,6 @@ module.exports.activate = (req, res, next) => {
 // Para guardar y editar el perfil
 module.exports.updateProfile = (req, res, next) => {
 
-    console.log(req.body)
     console.log("username", req.body.username)
     const upDates = {
         username: req.body.username,

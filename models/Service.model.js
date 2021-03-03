@@ -2,39 +2,61 @@ const mongoose = require("mongoose")
 const User = require("./User.model")
 
 
-const serviceSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
+const serviceSchema = new mongoose.Schema(
+  {
+    service: {
+      type: String,
+      required: true,
     },
 
     description: {
-        type: String,
-        required: true
+      type: String,
+      required: "Description field is required",
     },
 
     price: {
-        type: Number,
-        required: true
+      type: Number,
+      required: "Price field is required",
     },
 
     seller: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: User,
-        required: true
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: User,
+      required: true,
+    },
+    //TODO: AGRUPATE CREDENTIALS
+    userCredential: {
+      type: String,
+      required: "User account field is required",
+    },
+
+    passwordCredential: {
+      type: String,
+      required: "Password field is required",
     },
 
     image: {
-        type: String,
-        required: true
+      type: String,
+      required: false,
     },
-},
-{
+
+    visibility: {
+      type: Boolean,
+      required: true,
+      default: true,
+    },
+
+    shareWith: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: User,
+    },
+  },
+  {
     timestamps: true,
     toJSON: {
-        virtuals: true
-    }
-}
+      virtuals: true,
+    },
+  }
 );
 
 const Service = mongoose.model("Service", serviceSchema);
