@@ -3,10 +3,10 @@ const router = require("express").Router();
 const miscController = require("../controllers/misc.controller")
 const usersController = require('../controllers/users.controller')
 const serviceController = require("../controllers/service.controller")
+const chatController = require("../controllers/chat.controller")
 const secure = require("../middlewares/secure.middleware");
 
-const server = require('http').Server();
-const io = require('socket.io')(server);
+
 
 
 const upload = require('./storage.config')
@@ -43,32 +43,11 @@ router.post("/profile", secure.isAuthenticated, upload.single("image"), usersCon
 router.get("/service/create", secure.isAuthenticated, serviceController.create)
 router.post("/service", secure.isAuthenticated, serviceController.doCreate);
 
+//al get del parametro que es get tiene que llevar : porque tiene parametro chatDetail/:chatRoomId
 
 
 router.get("/test", function(req, res, next) {
-    res.render("users/service");
-});
-
-
-io.sockets.on("connection", function(socket) {
-    socket.on("username", function(username) {
-        socket.username = username;
-        io.emit("is_online", "🔵 <i>" + socket.username + " se une al chat..</i>");
-    });
-
-    socket.on("disconnect", function(username) {
-        io.emit(
-            "is_online",
-            "🔴 <i>" + socket.username + " ha dejado el chat ..</i>"
-        );
-    });
-
-    socket.on("chat_message", function(message) {
-        io.emit(
-            "chat_message",
-            "<strong>" + socket.username + "</strong>: " + message
-        );
-    });
+    res.render("users/chat");
 });
 
 

@@ -18,61 +18,39 @@
 
         <li class="nav-item dropdown">
           {{#if currentUser}}
-          <a class="btn btn-login btn-secondary active" style="background-color:#8728FF" href="#"
+          <!--<a class="navbar-brand" href="#">
+            <img src="{{currentUser.image}}" width="30" height="30" class="d-inline-block align-top" alt="">-->
+            <a class="btn btn-login btn-secondary active" style="background-color:#8728FF" href="#"
             id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Menu
           </a>
-          {{else}}
-          <a class="btn btn-login btn-secondary active" style="background-color:#8728FF" href="#"
-            id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Join Us!
-          </a>
-          {{/if}}
-
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
-
-
-            {{#if currentUser}}
-
-
-            <li><a class="dropdown-item" href="/profile">&#x1F440 My profile</a></li>
-            <form action="/logout" method="POST">
-              <li>
-                <button class="dropdown-item" type="submit">&#x1F44B Logout</button>
-              </li>
-            </form>
             {{else}}
-            <li><a class="dropdown-item" href="/register">&#x1F4CB Register</a></li>
-            <li><a class="dropdown-item" href="/login">&#x1F511 Login</a></li>
+            <a class="btn btn-login btn-secondary active" style="background-color:#8728FF" href="#"
+              id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Join Us!
+            </a>
             {{/if}}
-          </ul>
+
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+
+
+              {{#if currentUser}}
+
+
+              <li><a class="dropdown-item" href="/profile">&#x1F440 My profile</a></li>
+              <form action="/logout" method="POST">
+                <li>
+                  <button class="dropdown-item" type="submit">&#x1F44B Logout</button>
+                </li>
+              </form>
+              {{else}}
+              <li><a class="dropdown-item" href="/register">&#x1F4CB Register</a></li>
+              <li><a class="dropdown-item" href="/login">&#x1F511 Login</a></li>
+              {{/if}}
+            </ul>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

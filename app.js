@@ -81,6 +81,14 @@ app.use((error, req, res, next) => {
 });
 
 
+
+app.get("/test", function(req, res, next) {
+    res.render("users/market");
+});
+
+
+
+
 // Initialization on port
 const PORT = process.env.PORT || 3003;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

@@ -7,6 +7,7 @@
 @import url("./components/chat.css");
 @import url("./components/board.css");
 @import url("./components/menu.css");
+@import url("./components/market.css");
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 body {
     font-family: 'Roboto', sans-serif;
