@@ -1,10 +1,10 @@
 const passport = require('passport')
 const router = require("express").Router();
+
 const miscController = require("../controllers/misc.controller")
 const usersController = require('../controllers/users.controller')
 const serviceController = require("../controllers/service.controller")
 const secure = require("../middlewares/secure.middleware");
-
 const upload = require('./storage.config')
 
 const GOOGLE_SCOPES = ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile']
@@ -32,13 +32,15 @@ router.get("/authenticate/twitter", passport.authenticate("twitter-auth"));
 router.get("/authenticate/twitter/cb", usersController.doLoginTwitter);
 
 router.post("/logout", secure.isAuthenticated, usersController.logout);
+
 router.get("/profile", secure.isAuthenticated, usersController.profile);
 router.post("/profile", secure.isAuthenticated, upload.single("image"), usersController.updateProfile);
 
 //Service
 router.get("/service/create", secure.isAuthenticated, serviceController.create)
-router.post("/service", secure.isAuthenticated, serviceController.doCreate);
+router.post("/service/create", secure.isAuthenticated, serviceController.doCreate);
 
-
+router.get("/service/:id/edit", secure.isAuthenticated, serviceController.edit)
+router.post("/service/:id/edit", secure.isAuthenticated, serviceController.doEdit);
 
 module.exports = router;

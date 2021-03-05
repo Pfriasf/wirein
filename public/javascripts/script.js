@@ -1,8 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-
-    console.log('IronGenerator JS imported successfully!');
-
-}, false); //
 //previsualizar la imagen
 
 function readURL(input, element) {
@@ -18,3 +13,6 @@ function readURL(input, element) {
         reader.readAsDataURL(input.files[0]); // convert to base64 string
     }
 }
+
+
+
