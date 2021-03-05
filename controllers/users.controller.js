@@ -194,3 +194,27 @@ module.exports.updateProfile = (req, res, next) => {
 
     .catch((e) => console.log("error", error))
 }
+//like
+
+module.exports.like = (req, res, next) => {
+  Like.findOne({ service: req.params.serviceId, user: req.currentUser._id })
+    .then((like) => {
+      if (!like) {
+        return Like.create({
+          service: req.params.serviceId,
+          user: req.currentUser._id,
+        }).then(() => {
+          res.json({ add: 1 });
+        });
+      } else {
+        return Like.findByIdAndDelete(like._id).then(() => {
+          // dislike
+          res.json({ add: -1 });
+        });
+      }
+    })
+    .catch((e) => next(e));
+};
+
+
+

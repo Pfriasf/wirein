@@ -3,7 +3,6 @@ const User = require("./User.model")
 
 
 const ChatRoomSchema = new mongoose.Schema({
-    chatRoomId: Schema.Types.ObjectId,
     userOrigin: String,
     userReceiver: String,
     status: Boolean,

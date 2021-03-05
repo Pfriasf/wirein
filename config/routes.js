@@ -40,14 +40,18 @@ router.get("/profile", secure.isAuthenticated, usersController.profile);
 router.post("/profile", secure.isAuthenticated, upload.single("image"), usersController.updateProfile);
 
 //Service
-router.get("/service/create", secure.isAuthenticated, serviceController.create)
+router.get("/service/create", secure.isAuthenticated, serviceController.create);
 router.post("/service", secure.isAuthenticated, serviceController.doCreate);
 
-//al get del parametro que es get tiene que llevar : porque tiene parametro chatDetail/:chatRoomId
+router.post("/chat", chatController.createChat);
+router.post("/chatMessage", chatController.sendMessage);
+router.get("chatDetail/:chatRoomId", chatController.getChat);
 
+
+router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);
 
 router.get("/test", function(req, res, next) {
-    res.render("users/chat");
+    res.render("users/market");
 });
 
 
