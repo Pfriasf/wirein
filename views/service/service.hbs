@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row product">
+        <div class="d-flex flex-column justify-content-center align-items-center product-box">
+            <form action="/service{{#if service._id}}/{{service._id}}/edit{{else}}/create{{/if}}" method="POST">
+                <div class="productclass">
+                    <div class="form-group">
+                        <label for="service" class="form-control-label">STREAMING SERVICES LIST</label>
+                        <select class="custom-select" id="service" name="service">
+                            <option value="">Choose... &#x1F50E;</option>
+                            <option value="Netflix" {{#checkService "Netflix" service.service}} selected {{/checkService}}>Netflix</option>
+                            <option value="HBO GO" {{#checkService "HBO GO" service.service}} selected {{/checkService}}>HBO GO</option>
+                            <option value="Disney +" {{#checkService "Disney +" service.service}} selected {{/checkService}}>Disney+</option>
+                            <option value="Spotify" {{#checkService "Spotify" service.service}} selected {{/checkService}}>Spotify</option>
+                            <option value="Amazon Video" {{#checkService "Amazon Video" service.service}} selected {{/checkService}}>Amazon Video</option>
+                            <option value="Movistar+" {{#checkService "Movistar+" service.service}} selected {{/checkService}}>Movistar+</option>
+                            <option value="Filmin" {{#checkService "Filmin" service.service}} selected {{/checkService}}>Filmin</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price" class="form-control-label">PRICE</label>
+                        <input type="number" name="price" id="price" value="{{service.price}}" class="form-control" placeholder="&#x1F4B3;"
+                            id="price" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="form-control-label">DESCRIPTION</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"
+                            placeholder="&#x1F4DD;">{{service.description}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="userCredential" class="form-control-label">USER ACCOUNT</label>
+                        <input type="email" name="userCredential" value="{{service.userCredential}}" class="form-control" id="userCredential"
+                            placeholder="&#x1F4E7;" required>
+
+
+                        <label for="passwordCredential" class="form-control-label">PASSWORD ACCOUNT</label>
+                        <input type="password" name="passwordCredential" value="{{service.passwordCredential}}" class="form-control" placeholder="&#x1F512"
+                            id="passwordCredential" required>
+                    </div>
+                    {{#if errors}}
+                    <p class="error-message">{{errors.description}}</p>
+                    {{/if}}
+                    <div class="register-btm register-button">
+                        <button type="submit" class="btn btn-primary">Save!</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
