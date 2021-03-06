@@ -3,6 +3,13 @@ const mongoose = require("mongoose");
 const Service = require("../models/Service.model");
 const Like = require("../models/Like.model")
 
+
+
+module.exports.showMenu = (req, res, next) => {
+    res.render("service/menu")
+
+}
+
 module.exports.create = (req, res, next) => {
     res.render("service/service")
 };
@@ -30,6 +37,22 @@ module.exports.doCreate = (req, res, next) => {
                 next(e);
             }
         });
+};
+
+
+module.exports.readServices = (req, res, next) =>{
+    const serviceType = req.params.type
+    Service.find({ service: serviceType })
+    .populate("seller")
+    .then((services) => {
+        //TODO 
+        res.render("service/market", { services })
+      
+    })
+    .catch(() => res.render("service/service", {
+        service
+    }));
+
 };
 
 module.exports.edit = (req, res, next) => {

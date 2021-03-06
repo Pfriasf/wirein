@@ -41,16 +41,22 @@ router.get("/profile", secure.isAuthenticated, usersController.profile);
 router.post("/profile", secure.isAuthenticated, upload.single("image"), usersController.updateProfile);
 
 //Service
+router.get("/service/menu", secure.isAuthenticated, serviceController.showMenu);
+
 router.get("/service/create", secure.isAuthenticated, serviceController.create);
 router.post("/service/create", secure.isAuthenticated, serviceController.doCreate);
+
+router.get("/service/list/:type", secure.isAuthenticated, serviceController.readServices);
 
 router.get("/service/:id/edit", secure.isAuthenticated, serviceController.edit)
 router.post("/service/:id/edit", secure.isAuthenticated, serviceController.doEdit);
 
+
+
 router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);
 
 router.get("/test", function (req, res, next) {
-    res.render("users/mails");
+    res.render("users/market");
 });
 router.get("/contact", function (req, res, next) {
     res.render("contact");
