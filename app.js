@@ -10,7 +10,8 @@ const path = require("path");
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const session = require("./config/session.config");
-const upload = require('./config/storage.config')
+const upload = require('./config/storage.config');
+const sendMail = require('./config/mail');
 
 
 
@@ -20,6 +21,7 @@ const upload = require('./config/storage.config')
 
 require("./config/db.config");
 require('./config/passport.config')
+require('./config/mail')
 const sessionMiddleware = require('./middlewares/session.middleware') //requiero el middleware de la sessión
 
 const User = require('./models/User.model')
@@ -79,13 +81,6 @@ app.use((error, req, res, next) => {
     res.status(error.status);
     res.render("error", error);
 });
-
-
-
-app.get("/test", function(req, res, next) {
-    res.render("users/market");
-});
-
 
 
 

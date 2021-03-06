@@ -13,40 +13,37 @@
           <a class="nav-link active" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/">Contact Us</a>
+          <a class="nav-link active" href="/contact">Contact Us</a>
         </li>
 
         <li class="nav-item dropdown">
           {{#if currentUser}}
-            <a class="btn btn-login btn-secondary active" style="background-color:#3cc8a8" href="#"
+          <a class="btn btn-login active" style="background-color:transparent" style="border-color:transparent" href="#"
             id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Menu
+            <img src="{{currentUser.image}}" style="object-fit: cover" width="30" height="30" class="rounded-circle">
           </a>
+          {{else}}
+          <a class="btn btn-login btn-secondary active" style="background-color:#3cc8a8" href="#"
+            id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Join Us!
+          </a>
+          {{/if}}
+
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+            {{#if currentUser}}
+
+            <li><a class="dropdown-item" href="/profile">&#x1F440 My profile</a></li>
+            <form action="/logout" method="POST">
+              <li>
+                <button class="dropdown-item" type="submit">&#x1F44B Logout</button>
+              </li>
+            </form>
             {{else}}
-            <a class="btn btn-login btn-secondary active" style="background-color:#3cc8a8" href="#"
-              id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Join Us!
-            </a>
+            <li><a class="dropdown-item" href="/register">&#x1F4CB Register</a></li>
+            <li><a class="dropdown-item" href="/login">&#x1F511 Login</a></li>
             {{/if}}
-
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
-
-
-              {{#if currentUser}}
-
-
-              <li><a class="dropdown-item" href="/profile">&#x1F440 My profile</a></li>
-              <form action="/logout" method="POST">
-                <li>
-                  <button class="dropdown-item" type="submit">&#x1F44B Logout</button>
-                </li>
-              </form>
-              {{else}}
-              <li><a class="dropdown-item" href="/register">&#x1F4CB Register</a></li>
-              <li><a class="dropdown-item" href="/login">&#x1F511 Login</a></li>
-              {{/if}}
-            </ul>
+          </ul>
         </li>
       </ul>
     </div>

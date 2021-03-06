@@ -5,6 +5,7 @@ const usersController = require('../controllers/users.controller')
 const serviceController = require("../controllers/service.controller")
 const chatController = require("../controllers/chat.controller")
 const secure = require("../middlewares/secure.middleware");
+const sendMail = require('./mail');
 
 
 
@@ -51,7 +52,30 @@ router.get("chatDetail/:chatRoomId", chatController.getChat);
 router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);
 
 router.get("/test", function(req, res, next) {
-    res.render("users/market");
+    res.render("users/mails");
+});
+router.get("/contact", function(req, res, next) { 
+    res.render("contact");
+});
+
+
+router.post('/email', (req, res) => {
+    const {  email, fname, message } = req.body;
+    console.log('Data: ', req.body);
+
+    sendMail(email, fname, message, function(err, data) {
+        if (err) {
+           console.log('ERROR: ', err);
+            return res.status(500).json({ message:'Internal Error' });
+        }
+        console.log('Email sent!!!');
+        return res.json({ message: 'Email sent!' });
+    });
+});
+
+// Email sent page
+router.get('/email/sent', (req, res) => {
+    res.render('emailMessage');
 });
 
 
