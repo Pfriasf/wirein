@@ -2,6 +2,7 @@ require('dotenv').config();
 require("./config/db.config");
 require('./config/passport.config')
 require("./config/hbs.config");
+require('./config/mail')
 
 const createError = require('http-errors');
 const express = require('express');
@@ -13,20 +14,24 @@ const bodyParser = require('body-parser');
 
 const router = require("./config/routes")
 const session = require("./config/session.config");
-const sessionMiddleware = require('./middlewares/session.middleware') 
+const sessionMiddleware = require('./middlewares/session.middleware')
 
 //express config 
 
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+    extended: false
+}));
 app.use(express.static("public"));
 
 app.use(logger('dev'));
 app.use(session);
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(bodyParser.json());
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
@@ -46,7 +51,7 @@ app.use(sessionMiddleware.findUser)
 
 //error handler 
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     next(createError(404));
 });
 

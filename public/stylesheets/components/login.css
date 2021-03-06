@@ -83,8 +83,8 @@
                 }
                 
                 .btn-primary {
-                    background-color: #8728FF !important;
-                    border-color: #8728FF !important;
+                    background-color: #3cc8a8 !important;
+                    border-color: #3cc8a8 !important;
                     color: white !important;
                     border-radius: 16px;
                     font-weight: bold;
@@ -110,7 +110,7 @@
                 
                 .social .circle {
                     background-color: #EEEEEE;
-                    color: #8728FF;
+                    color: #1d5c4e;
                     border-radius: 50%;
                     display: inline-block;
                     margin: 0 17px;
@@ -120,7 +120,7 @@
                 
                 .circle .fa {
                     font-size: 16px;
-                    color: #8728FF;
+                    color: #1d5c4e;
                 }
                 
                 .social .facebook {
@@ -141,15 +141,15 @@
                 
                 .facebook:hover {
                     animation: rotate 1.2s linear reverse infinite;
-                    background: #e7a9ff;
+                    background: #97e8d6;
                 }
                 
                 .google:hover {
                     animation: rotate 1.2s linear reverse infinite;
-                    background: #e7a9ff;
+                    background: #97e8d6;
                 }
                 
                 .twitter:hover {
                     animation: rotate 1.2s linear reverse infinite;
-                    background: #e7a9ff;
+                    background: #97e8d6;
                 }

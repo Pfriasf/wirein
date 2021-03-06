@@ -1,0 +1,52 @@
+.panel-footer {
+    padding: 4px 15px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    text-decoration: none;
+    display: inline;
+}
+
+.userservice {
+    display: flex;
+    align-items: center;
+    padding-right: 0px !important;
+}
+
+.usertext {
+    padding-left: 0em im !important;
+    display: flex;
+    align-items: center;
+}
+
+.chatbtn {
+    display: flex;
+    justify-content: center;
+    padding: 0px !important;
+    display: inline;
+}
+
+.market {
+    margin-top: 5em;
+}
+
+.marketCard {
+    margin: auto;
+    width: 50% !important;
+    max-width: 390px !important;
+    background: #E6EEF8;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    position: absolute;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 15px;
+}
+.likes {
+    text-decoration: none;
+    color: black;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .unliked {
+    filter: grayscale();
+  }

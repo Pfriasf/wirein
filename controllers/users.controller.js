@@ -31,7 +31,7 @@ module.exports.doRegister = (req, res, next) => {
             } else {
                 User.findOne({
                         email: req.body.email
-                        // username: req.body.username
+                            // username: req.body.username
                     })
                     .then((user) => {
                         if (user) {
@@ -128,7 +128,7 @@ module.exports.doLoginTwitter = (req, res, next) => {
         } else if (!user) {
             res.status(400).render("users/login", {
                 error: validations.error
-                });
+            });
         } else {
             req.login(user, (loginErr) => {
                 if (loginErr) next(loginErr);
@@ -194,3 +194,27 @@ module.exports.updateProfile = (req, res, next) => {
 
     .catch((e) => console.log("error", error))
 }
+//like
+
+module.exports.like = (req, res, next) => {
+  Like.findOne({ service: req.params.serviceId, user: req.currentUser._id })
+    .then((like) => {
+      if (!like) {
+        return Like.create({
+          service: req.params.serviceId,
+          user: req.currentUser._id,
+        }).then(() => {
+          res.json({ add: 1 });
+        });
+      } else {
+        return Like.findByIdAndDelete(like._id).then(() => {
+          // dislike
+          res.json({ add: -1 });
+        });
+      }
+    })
+    .catch((e) => next(e));
+};
+
+
+

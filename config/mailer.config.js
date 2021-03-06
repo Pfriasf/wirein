@@ -11,9 +11,9 @@ const transporter = nodemailer.createTransport({
 
 module.exports.sendActivationEmail = (email, token) => {
     transporter.sendMail({
-        from: `"WiredIn Test" <${process.env.NM_USER}>`,
+        from: `"WiredIn" <${process.env.NM_USER}>`,
         to: email,
-        subject: "Thanks for be part of the WiredWorld!",
+        subject: "You've got Wired",
         html: generateTemplate(token),
 
     })
