@@ -21,7 +21,7 @@ const serviceSchema = new mongoose.Schema(
 
     seller: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: User,
+      ref: "User",
       required: true,
     },
     //TODO: AGRUPATE CREDENTIALS
@@ -48,7 +48,7 @@ const serviceSchema = new mongoose.Schema(
 
     shareWith: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: User,
+      ref: "User",
     },
   },
   {

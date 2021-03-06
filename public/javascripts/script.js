@@ -39,7 +39,7 @@ const like = (element) => {
 
 //contact us
 
-("form").on("submit", e => {
+/*("form").on("submit", e => {
   e.preventDefault();
   const email = $("#email")
     .val()
@@ -62,4 +62,4 @@ const like = (element) => {
     .catch(() => {
       window.location.href = "/error";
     });
-});
+});*/
