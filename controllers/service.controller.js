@@ -43,15 +43,15 @@ module.exports.doCreate = (req, res, next) => {
 module.exports.readServices = (req, res, next) =>{
     const serviceType = req.params.type
     Service.find({ service: serviceType })
-    .populate("seller")
-    .then((services) => {
-        //TODO 
-        res.render("service/market", { services })
-      
-    })
-    .catch(() => res.render("service/service", {
-        service
-    }));
+        .populate("seller")
+        .then((services) => {
+            //TODO: 
+            res.render("service/market", { services })
+        
+        })
+        .catch(() => res.render("service/service", {
+            service
+        }));
 
 };
 
@@ -82,6 +82,15 @@ module.exports.doEdit = (req, res, next) => {
         .catch(() => res.render("service/service", {
             service
         }));
+}
+
+module.exports.delete = (req, res, next) => {
+    Service.findByIdAndDelete(({ _id: req.params.id, seller: req.currentUser.id }))
+        .then(() => {
+            console.log("service deleted")
+            res.redirect("/");
+        })
+        .catch((e) => next(e));
 }
 
 // para el market
