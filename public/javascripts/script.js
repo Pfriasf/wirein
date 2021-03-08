@@ -66,25 +66,25 @@ $("#mailForm").on("submit", e => {
 
 //ver password
 
-$(document).ready(function() {
-  $("#show_hide_password a").on('click', function(event) {
-      event.preventDefault();
-      if($('#show_hide_password input').attr("type") == "text"){
-          $('#show_hide_password input').attr('type', 'password');
-          $('#show_hide_password i').addClass( "fa-eye-slash" );
-          $('#show_hide_password i').removeClass( "fa-eye" );
-      }else if($('#show_hide_password input').attr("type") == "password"){
-          $('#show_hide_password input').attr('type', 'text');
-          $('#show_hide_password i').removeClass( "fa-eye-slash" );
-          $('#show_hide_password i').addClass( "fa-eye" );
-      }
+$(document).ready(function () {
+  $("#show_hide_password a").on('click', function (event) {
+    event.preventDefault();
+    if ($('#show_hide_password input').attr("type") == "text") {
+      $('#show_hide_password input').attr('type', 'password');
+      $('#show_hide_password i').addClass("fa-eye-slash");
+      $('#show_hide_password i').removeClass("fa-eye");
+    } else if ($('#show_hide_password input').attr("type") == "password") {
+      $('#show_hide_password input').attr('type', 'text');
+      $('#show_hide_password i').removeClass("fa-eye-slash");
+      $('#show_hide_password i').addClass("fa-eye");
+    }
   });
 });
 
 //read more
 
-$(document).ready(function() {
-  $("#toggle").click(function() {
+$(document).ready(function () {
+  $("#toggle").click(function () {
     var elem = $("#toggle").text();
     if (elem == "Read More") {
       //Stuff to do when btn is in the read more state
@@ -97,3 +97,24 @@ $(document).ready(function() {
     }
   });
 });
+
+const deleteCard = (id) => {
+  axios
+    .get(`/service/${id}/delete`)
+    .then((response) => {
+      if (response.status == 204) {
+        const node = document.getElementById(`${id}`);
+        if (node) {
+          node.remove();
+          const cardList = document.querySelectorAll(".marketcard")
+          if (cardList.length == 0) {
+            const containerNode = document.getElementById("pills-home")
+            let textNode = document.createTextNode("Here you will find all the services that you publish 😁");
+            containerNode.appendChild(textNode);
+          }
+        }
+      }
+    })
+    .catch((e) => console.error("Error liking a service", e));
+
+}
