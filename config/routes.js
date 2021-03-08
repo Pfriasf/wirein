@@ -56,7 +56,7 @@ router.post("/service/:id/edit", secure.isAuthenticated, serviceController.doEdi
 router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);
 
 router.get("/test", function (req, res, next) {
-    res.render("partials/wish");
+    res.render("service/checkout");
 });
 router.get("/contact", function (req, res, next) {
     res.render("contact");

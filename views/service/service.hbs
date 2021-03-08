@@ -1,3 +1,4 @@
+<a class="arrow" href="/"><i class="fa fa-arrow-left" aria-hidden="true"></i></a> 
 <div class="container">
     <div class="row product">
         <div class="d-flex flex-column justify-content-center align-items-center product-box">
@@ -34,8 +35,13 @@
 
 
                         <label for="passwordCredential" class="form-control-label">PASSWORD ACCOUNT</label>
-                        <input type="password" name="passwordCredential" value="{{service.passwordCredential}}" class="form-control" placeholder="&#x1F512"
+                        <div class="input-group" id="show_hide_password">
+                            <input type="password" name="passwordCredential" value="{{service.passwordCredential}}" class="form-control" placeholder="&#x1F512"
                             id="passwordCredential" required>
+                            <div class="input-group-addon">
+                                 <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
                     </div>
                     {{#if errors}}
                     <p class="error-message">{{errors.description}}</p>

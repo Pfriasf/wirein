@@ -11,17 +11,13 @@
                         <div class="card-block">
                             <div class="col-md-11">
                                 <div class="card-block">
-                                    <h6 class="serviceName"> Maria</h6>
+                                    <h6 class="serviceName">Maria</h6>
                                     <h6 class="serviceName">Netflix</h6>
                                     <h6 class="description">Compartir por tres meses prorogales</h6>
                                 </div>
                                 <div class="addbtn">
                                     <button type="submit" class="btn abtn btn-primary btn-sm btn-block">Add</button>
-                                </div>
-                                <div class="col-md-1 likebtn">
-                                    <button onclick="like(this)" {{#if disabled}}disabled{{/if}}
-                                        data-serviceid="{{_id}}"
-                                        class="likes {{#unless likedByUser}}unliked{{/unless}}">⭐<span>{{likeCount}}</span></button>
+                                     <button type="submit" class="btn abtn btn-primary btn-sm btn-block">Discard</button>
                                 </div>
                             </div>
                         </div>

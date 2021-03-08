@@ -27,7 +27,7 @@
   }
  
 .card-block,
-h6,
+p,
 .description{
     color: #2c5364;
     font-size: 1em !important;
@@ -81,3 +81,15 @@ h6,
     flex-direction: column;
 }
 
+.arrow{
+    font-size: 2rem;
+    color: #3cc8a8;
+    margin-left: 5.2rem;
+}
+
+.readMore{
+    background-color: transparent;
+    border: 0px solid transparent;
+    color:#3cc8a8;
+    font-size: 0.6rem;
+}
