@@ -51,6 +51,8 @@ router.get("/service/list/:type", secure.isAuthenticated, serviceController.read
 router.get("/service/:id/edit", secure.isAuthenticated, serviceController.edit)
 router.post("/service/:id/edit", secure.isAuthenticated, serviceController.doEdit);
 
+router.get("/service/:id/delete", secure.isAuthenticated, serviceController.delete);
+
 
 
 router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);
