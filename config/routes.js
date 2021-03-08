@@ -53,6 +53,11 @@ router.post("/service/:id/edit", secure.isAuthenticated, serviceController.doEdi
 
 router.get("/service/:id/delete", secure.isAuthenticated, serviceController.delete);
 
+router.get("/service/my-services", secure.isAuthenticated, serviceController.showMyServices);
+router.get("/service/my-contracted-services", secure.isAuthenticated, serviceController.showMyContractedServices);
+router.get("/service/my-wish-list", secure.isAuthenticated, serviceController.showMyWishList);
+
+
 
 
 router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);

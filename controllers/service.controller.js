@@ -93,6 +93,30 @@ module.exports.delete = (req, res, next) => {
         .catch((e) => next(e));
 }
 
+module.exports.showMyServices = (req, res, next) => {
+    Service.findById({ seller: req.currentUser.id })
+      .then((services) => {
+        res.toJSON(services);
+      })
+      .catch((e) => next(e));
+}
+
+module.exports.showMyContractedServices = (req, res, next) => {
+  Service.findById({ _id: req.params.id })
+    .then((services) => {
+      res.toJSON(services);
+    })
+    .catch((e) => next(e));
+}
+
+module.exports.showMyWishList = (req, res, next) => {
+  Service.findById({ _id: req.params.id })
+    .then((services) => {
+      res.toJSON(services);
+    })
+    .catch((e) => next(e));
+}
+
 // para el market
 module.exports.market = (req, res, next) => {
     Product.find()
