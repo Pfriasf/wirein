@@ -44,7 +44,8 @@
               <input type="password" name="password" class="form-control {{#if errors.password}}is-invalid{{/if}}"
                 placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679; &#x1F512" id="password" required>
               <div class="form-text">At least 8 characters, must contain one lower-case & one upper-case letter, one
-                digit and a special character.</div>
+                digit and a special character.
+                </div>  
               {{#if errors.password}}
               <div class="invalid-feedback">
                 {{errors.password}}
@@ -52,13 +53,19 @@
               {{/if}}
             </div>
             <div class="form-group">
-              <label for="repeatPassword" class="form-control-label">REPEAT PASSWORD</label>
-              <input type="password" name="repeatPassword" class="form-control"
-                placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679; &#x1F512" id="repeatPassword"
-                required>
-            </div>
-
-            <div class="col-lg-12 loginbttm">
+                <label for="repeatPassword" class="form-control-label">REPEAT PASSWORD</label>
+                <div class="input-group" id="show_hide_password">
+                      <input type="password" name="repeatPassword" class="form-control"
+                      placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679; &#x1F512" id="repeatPassword"
+                        required>
+                      <div class="input-group-addon">
+                    <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+              </div>
+              <div class="col-lg-12 loginbttm">
               <div class="col-lg-6 login-btm login-btm login-text">
                 {{#if error}}
                 <p class="error-message">{{error}}</p>

@@ -55,6 +55,23 @@ module.exports.readServices = (req, res, next) =>{
 
 };
 
+
+module.exports.readOffer = (req, res, next) =>{
+    const seller = req.params.seller
+    Service.find({ seller })
+    .populate("seller")
+    .then((services) => {
+        //TODO 
+        res.render("partial/offer", { services })
+      
+    })
+    .catch(() => res.render("service/service", {
+        service
+    }));
+
+};
+
+
 module.exports.edit = (req, res, next) => {
     Service.findById(req.params.id)
         .then(service => {
@@ -122,7 +139,7 @@ module.exports.market = (req, res, next) => {
     Product.find()
         .populate("likes")
         .then((service) => {
-            res.render("test", {
+            res.render("service/market", {
                 service: service.map((p, i) => {
                     p = p.toJSON();
                     p.likeCount = p.likes.length;

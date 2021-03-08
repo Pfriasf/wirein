@@ -6,7 +6,7 @@ const usersController = require('../controllers/users.controller')
 const serviceController = require("../controllers/service.controller")
 const chatController = require("../controllers/chat.controller")
 const secure = require("../middlewares/secure.middleware"); 
-const sendMail = require('./mail');
+const mailController = require('../controllers/mail.controller');
 const upload = require('./storage.config')
 
 const GOOGLE_SCOPES = ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile']
@@ -63,38 +63,18 @@ router.get("/service/my-wish-list", secure.isAuthenticated, serviceController.sh
 router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);
 
 router.get("/test", function (req, res, next) {
-    res.render("users/market");
+    res.render("service/checkout");
 });
 router.get("/contact", function (req, res, next) {
     res.render("contact");
 });
 
+//ruta para renderizar 
+router.get("/service/:seller", serviceController.readOffer);
 
-router.post('/email', (req, res) => {
-    const {
-        email,
-        fname,
-        message
-    } = req.body;
-    console.log('Data: ', req.body);
 
-    sendMail(email, fname, message, function (err, data) {
-        if (err) {
-            console.log('ERROR: ', err);
-            return res.status(500).json({
-                message: 'Internal Error'
-            });
-        }
-        console.log('Email sent!!!');
-        return res.json({
-            message: 'Email sent!'
-        });
-    });
-});
-
-// Email sent page
-router.get('/email/sent', (req, res) => {
-    res.render('emailMessage');
-});
+router.post('/email', mailController.contactMail);
+router.get('/email/sent', mailController.sentMailSuccess);
 
 module.exports = router;
+
