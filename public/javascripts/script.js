@@ -39,7 +39,7 @@ const like = (element) => {
 
 //contact us
 
-/*("form").on("submit", e => {
+$("#mailForm").on("submit", e => {
   e.preventDefault();
   const email = $("#email")
     .val()
@@ -62,4 +62,38 @@ const like = (element) => {
     .catch(() => {
       window.location.href = "/error";
     });
-});*/
+});
+
+//ver password
+
+$(document).ready(function() {
+  $("#show_hide_password a").on('click', function(event) {
+      event.preventDefault();
+      if($('#show_hide_password input').attr("type") == "text"){
+          $('#show_hide_password input').attr('type', 'password');
+          $('#show_hide_password i').addClass( "fa-eye-slash" );
+          $('#show_hide_password i').removeClass( "fa-eye" );
+      }else if($('#show_hide_password input').attr("type") == "password"){
+          $('#show_hide_password input').attr('type', 'text');
+          $('#show_hide_password i').removeClass( "fa-eye-slash" );
+          $('#show_hide_password i').addClass( "fa-eye" );
+      }
+  });
+});
+
+//read more
+
+$(document).ready(function() {
+  $("#toggle").click(function() {
+    var elem = $("#toggle").text();
+    if (elem == "Read More") {
+      //Stuff to do when btn is in the read more state
+      $("#toggle").text("Read Less");
+      $("#text").slideDown();
+    } else {
+      //Stuff to do when btn is in the read less state
+      $("#toggle").text("Read More");
+      $("#text").slideUp();
+    }
+  });
+});

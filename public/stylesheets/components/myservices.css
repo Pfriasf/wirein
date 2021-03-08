@@ -1,0 +1,74 @@
+.orders{
+    margin-top: 6em !important;
+}
+.orders .nav-pills .nav-link.active {
+    background-color: #3cc8a8 !important;
+    border: none;
+}
+
+/*#offers, #orders, #wish{
+    color: white;
+
+}
+
+
+.offers{
+    width: 320px;
+}
+.offers,
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 5;
+    border: none;
+    border-radius: .28571429rem;
+    margin-top:20px;
+}*/
+.order{
+    width: 320px;
+}
+.order
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 5;
+    border: none;
+    border-radius: .28571429rem;
+    margin-top:20px;
+}
+/*.order{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
+
+.orderCard{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+.pildora{
+    color: white;
+    text-align: center;
+   
+}
+
+.oferta{
+    width: 10em;
+    border: none !important;
+    margin-right: 1em;
+ 
+}
+.orden{
+    width: 10em;
+    border: none !important;
+    margin-right: 1em;
+    background-color:
+}
+.deseo{
+    width: 10em;
+    border: none !important;
+    background-color:
+}

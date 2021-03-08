@@ -91,3 +91,8 @@
         letter-spacing: 1px;
         color: #1d5c4e;
     }
+
+    .menu, h6,
+    .find{
+        font-size: 1em !important;
+    }

@@ -22,12 +22,16 @@
                 placeholder="example@example.com &#x1F4E7;" required>
             </div>
             <div class="form-group">
-              <label class="form-control-label">PASSWORD</label>
-              <input type="password" name="password" class="form-control"
-                placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679; &#x1F512" id="password" required>
-            </div>
+                  <label class="form-control-label">PASSWORD</label>
+               <div class="input-group" id="show_hide_password">
+                    <input type="password" name="password" class="form-control"
+                     placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679; &#x1F512" id="password" required>
+                   <div class="input-group-addon">
+                      <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                   </div>
+              </div>
 
-            <div class="col-lg-12 loginbttm">
+             <div class="col-lg-12 loginbttm">
               <div class="col-lg-6 login-btm login-text">
                 {{#if error}}
                 <p class="error-message">{{error}}</p>
