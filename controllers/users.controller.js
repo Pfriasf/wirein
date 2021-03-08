@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const passport = require('passport')
 const User = require("../models/User.model");
+const Like = require("../models/Like.model")
+
 const {
     sendActivationEmail
 } = require("../config/mailer.config");

@@ -1,19 +1,60 @@
-
-    <div class="card marketCard" style="width: 350px;" id="service{{_id}}">
-        <div class="row no-gutters">
-            <div class="userservice col-sm-5">
-                <img id="user-photo" src="{{seller.image}}" alt="Suresh Dasari Card">
-            </div>
-            <div class="usertext col-sm-7">
-                <div class="card-body">
-                    <h6 class="serviceSeller">{{seller.username}}</h6>
-                    <h6 class="service">{{service}}</h6>
+<!--div class="center">
+    <div class="card marketcard" sytle="width:320px" id=" service{{_id}}">
+        <div class="additional">
+            <div class="user-card">
+                <div class="level center">
+                    {{seller.username}}
+                </div>
+                <div>
+                    <img id="user-photo" src="{{seller.image}}" alt="Suresh Dasari Card">
+                </div>
+                <div class="general">
+                    <h6 class="serviceName">{{service}}</h6>
                     <h6 class="description">{{description}}</h6>
-                    <div class="chatbtn register-btm register-button">
-                        <button type="submit" class="btn btn-primary btn-sm btn-block">Add</button>
-                        <button onclick="like(this)" {{#if disabled}}disabled{{/if}} data-serviceid="{{_id}}" class="likes {{#unless likedByUser}}unliked{{/unless}}">⭐<span>{{likeCount}}</span></button>
+                <div class="col-sm-1">
+                    <button onclick="like(this)" {{#if disabled}}disabled{{/if}} data-serviceid="{{_id}}"
+                        class="likes {{#unless likedByUser}}unliked{{/unless}}">⭐<span>{{likeCount}}</span></button>
+                </div>
+            </div>
+            <div class="row">
+                <div
+                    class="chatbtn col-sm-12 d-flex justify-content-center align-items-center register-btm register-button">
+                    <button type="submit" class="btn btn-primary btn-sm btn-block">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="marketcard">
+    <div class="card" sytle="width:320px">
+        <div class="row" id=" service{{_id}}">
+            <div class="card float-right">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <img id="user-photo-market" src="{{seller.image}}" alt="">
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="card-block">
+                            <div class="col-md-11">
+                                <div class="card-block">
+                                    <h6 class="serviceName"> {{seller.username}}</h6>
+                                    <h6 class="serviceName">{{service}}</h6>
+                                    <h6 class="description">{{description}}</h6>
+                                </div>
+                                <div class="addbtn">
+                                    <button type="submit" class="btn abtn btn-primary btn-sm btn-block">Add</button>
+                                </div>
+                                <div class="col-md-1 likebtn">
+                                    <button onclick="like(this)" {{#if disabled}}disabled{{/if}}
+                                        data-serviceid="{{_id}}"
+                                        class="likes {{#unless likedByUser}}unliked{{/unless}}">⭐<span>{{likeCount}}</span></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

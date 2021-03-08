@@ -1,52 +1,83 @@
-.panel-footer {
-    padding: 4px 15px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    text-decoration: none;
-    display: inline;
-}
-
-.userservice {
-    display: flex;
-    align-items: center;
-    padding-right: 0px !important;
-}
-
-.usertext {
-    padding-left: 0em im !important;
-    display: flex;
-    align-items: center;
-}
-
-.chatbtn {
-    display: flex;
-    justify-content: center;
-    padding: 0px !important;
-    display: inline;
-}
-
-.market {
-    margin-top: 5em;
-}
-
-.marketCard {
-    margin: auto;
-    width: 50% !important;
-    max-width: 390px !important;
-    background: #E6EEF8;
-    text-align: center;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    position: absolute;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    border-radius: 15px;
-}
 .likes {
     text-decoration: none;
     color: black;
     background-color: transparent;
     border: none;
+    margin: auto;
+    margin-left: 1em !important;
   }
   
   .unliked {
     filter: grayscale();
   }
+
+  
+  .card-block,
+  h6,
+  .serviceSeller{
+      color: black;
+      font-size:1em !important;
+  }
+  
+  .card-block,
+  h6,
+  .serviceName{
+      color: black;;
+      font-size:1em !important;
+  }
+ 
+.card-block,
+h6,
+.description{
+    color: #2c5364;
+    font-size: 1em !important;
+}
+
+.marketcard{
+    width: 320px;
+}
+.marketcard,
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 5;
+    border: none;
+    border-radius: .28571429rem;
+    margin-top:20px;
+}
+
+  .card-block{
+      margin-top: 1em;
+  }
+
+.abtn{
+   margin-bottom: 1em;
+}
+
+.addbtn{
+    display: inline; 
+}
+  
+#user-photo-market {
+    border-radius: 50%;
+    width: 100px;
+    max-width: 100px;
+    height: 100px;
+    max-width: 100px;
+    margin-left: 8px;
+    border: 2px solid #1d5c4e;
+    object-fit: cover;
+    margin-top: 20px;
+}
+
+.likebtn{
+    display: inline; 
+    margin-bottom: 2em;
+}
+.market{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
