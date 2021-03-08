@@ -27,7 +27,7 @@ module.exports.doCreate = (req, res, next) => {
 
     Service.create(req.body)
         .then((service) => {
-            res.redirect("/profile")
+            res.redirect("/service/my-services");
         })
         .catch((e) => {
             console.log("error", e)
@@ -40,34 +40,22 @@ module.exports.doCreate = (req, res, next) => {
 };
 
 
-module.exports.readServices = (req, res, next) =>{
+module.exports.readServices = (req, res, next) => {
     const serviceType = req.params.type
-    Service.find({ service: serviceType })
+    Service.find({
+            service: serviceType
+        })
         .populate("seller")
         .then((services) => {
             //TODO: 
-            res.render("service/market", { services })
-        
+            res.render("service/market", {
+                services
+            })
+
         })
         .catch(() => res.render("service/service", {
             service
         }));
-
-};
-
-
-module.exports.readOffer = (req, res, next) =>{
-    const seller = req.params.seller
-    Service.find({ seller })
-    .populate("seller")
-    .then((services) => {
-        //TODO 
-        res.render("partial/offer", { services })
-      
-    })
-    .catch(() => res.render("service/service", {
-        service
-    }));
 
 };
 
@@ -93,7 +81,7 @@ module.exports.doEdit = (req, res, next) => {
     Service.findByIdAndUpdate(id, service, {
             new: true
         })
-        .then((service) => res.render("service/service", {
+        .then((service) => res.render("/service/my-services", {
             service
         }))
         .catch(() => res.render("service/service", {
@@ -102,36 +90,73 @@ module.exports.doEdit = (req, res, next) => {
 }
 
 module.exports.delete = (req, res, next) => {
-    Service.findByIdAndDelete(({ _id: req.params.id, seller: req.currentUser.id }))
+    //TODO: VALIDAR USUARIO
+    Service.findByIdAndDelete(({
+            _id: req.params.id
+        }))
         .then(() => {
-            console.log("service deleted")
-            res.redirect("/");
+            res.status(204).send("OK");
         })
         .catch((e) => next(e));
 }
 
+module.exports.contract = (req, res, next) => {
+
+    Service.findOneAndUpdate(req.params.id, {
+            shareWith: req.currentUser.id
+        })
+        .then(() => {
+            res.render("service/checkout")
+        })
+        .catch((e) => next(e));
+}
+
+module.exports.cancel = (req, res, next) => {
+    Service.findOneAndUpdate(req.params.id, {
+            shareWith: null
+        })
+        .then(() => {
+            res.render("service/checkout");
+        })
+        .catch((e) => next(e));
+};
+
 module.exports.showMyServices = (req, res, next) => {
-    Service.findById({ seller: req.currentUser.id })
-      .then((services) => {
-        res.toJSON(services);
-      })
-      .catch((e) => next(e));
+    Service.find({
+            seller: req.currentUser.id
+        })
+        .populate("seller")
+        .then((services) => {
+            console.log(services)
+            res.render("service/myServices", {
+                services
+            })
+        })
+        .catch((e) => next(e));
 }
 
 module.exports.showMyContractedServices = (req, res, next) => {
-  Service.findById({ _id: req.params.id })
-    .then((services) => {
-      res.toJSON(services);
-    })
-    .catch((e) => next(e));
+    Service.find({
+            shareWith: req.currentUser.id
+        })
+        .populate("seller")
+        .then((services) => {
+            console.log(services);
+            res.render("service/myContractedServices", {
+                services
+            });
+        })
+        .catch((e) => next(e));
 }
 
 module.exports.showMyWishList = (req, res, next) => {
-  Service.findById({ _id: req.params.id })
-    .then((services) => {
-      res.toJSON(services);
-    })
-    .catch((e) => next(e));
+    Service.findById({
+            _id: req.params.id
+        })
+        .then((services) => {
+            res.toJSON(services);
+        })
+        .catch((e) => next(e));
 }
 
 // para el market

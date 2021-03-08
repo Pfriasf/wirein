@@ -5,7 +5,7 @@ const miscController = require("../controllers/misc.controller")
 const usersController = require('../controllers/users.controller')
 const serviceController = require("../controllers/service.controller")
 const chatController = require("../controllers/chat.controller")
-const secure = require("../middlewares/secure.middleware"); 
+const secure = require("../middlewares/secure.middleware");
 const mailController = require('../controllers/mail.controller');
 const upload = require('./storage.config')
 
@@ -53,6 +53,10 @@ router.post("/service/:id/edit", secure.isAuthenticated, serviceController.doEdi
 
 router.get("/service/:id/delete", secure.isAuthenticated, serviceController.delete);
 
+router.get("/service/:id/add", secure.isAuthenticated, serviceController.contract)
+router.get("/service/:id/cancel", secure.isAuthenticated, serviceController.cancel)
+
+
 router.get("/service/my-services", secure.isAuthenticated, serviceController.showMyServices);
 router.get("/service/my-contracted-services", secure.isAuthenticated, serviceController.showMyContractedServices);
 router.get("/service/my-wish-list", secure.isAuthenticated, serviceController.showMyWishList);
@@ -69,12 +73,9 @@ router.get("/contact", function (req, res, next) {
     res.render("contact");
 });
 
-//ruta para renderizar 
-router.get("/service/:seller", serviceController.readOffer);
 
 
 router.post('/email', mailController.contactMail);
 router.get('/email/sent', mailController.sentMailSuccess);
 
 module.exports = router;
-

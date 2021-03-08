@@ -12,11 +12,12 @@
                                 <div class="card-block">
                                     <h6 class="serviceName"> {{seller.username}}</h6>
                                     <h6 class="serviceName">{{service}}</h6>
-                                    <p class="description">{{description}}<button class="readMore" id="toggle">Read More</button></p>
-                                   
+                                    <p class="description">{{description}}<button class="readMore" id="toggle">Read
+                                            More</button></p>
+
                                 </div>
                                 <div class="addbtn">
-                                    <button type="submit" class="btn abtn btn-primary btn-sm btn-block">Add</button>
+                                    <a href="/service/{{_id}}/add" class="btn abtn btn-primary btn-sm btn-block">Add</a>
                                 </div>
                                 <div class="col-md-1 likebtn">
                                     <button onclick="like(this)" {{#if disabled}}disabled{{/if}}
