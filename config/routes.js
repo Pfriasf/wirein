@@ -67,7 +67,7 @@ router.get("/service/my-wish-list", secure.isAuthenticated, serviceController.sh
 router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);
 
 router.get("/test", function (req, res, next) {
-    res.render("service/checkout");
+    res.render("partial/myWishList");
 });
 router.get("/contact", function (req, res, next) {
     res.render("contact");
