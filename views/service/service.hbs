@@ -19,8 +19,12 @@
 
                     <div class="form-group">
                         <label for="price" class="form-control-label">PRICE</label>
-                        <input type="number" name="price" id="price" value="{{service.price}}" class="form-control" placeholder="&#x1F4B3;"
+                      <input type="number" name="price" id="price" value="{{service.price}}" class="form-control"  pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" placeholder="&#x1F4B3;"
                             id="price" required>
+                          <!--<input type="text" name="price" id="price" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" 
+                          data-type="currency" placeholder="&#x1F4B3;"required>-->
+
+
                     </div>
 
                     <div class="form-group">

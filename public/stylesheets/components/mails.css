@@ -10,12 +10,12 @@
     border-radius: 15px;
 }
 
-.mailer,
-h6,
+.mailer
 .gotmail
 {
-    font-size: 26px !important;
+    font-size: 20px !important;
     color:#29ad91;
+    padding: 1em !important;
     
 }
 .mailer {

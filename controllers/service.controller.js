@@ -106,7 +106,7 @@ module.exports.contract = (req, res, next) => {
             shareWith: req.currentUser.id
         })
         .then(() => {
-            res.render("service/checkout")
+            res.render("service/contractMessage")
         })
         .catch((e) => next(e));
 }
@@ -116,10 +116,12 @@ module.exports.cancel = (req, res, next) => {
             shareWith: null
         })
         .then(() => {
-            res.render("service/checkout");
+            res.status(204).send("OK");
+            /*res.render("service/checkout");*/
         })
         .catch((e) => next(e));
-};
+}
+
 
 module.exports.showMyServices = (req, res, next) => {
     Service.find({
@@ -157,6 +159,7 @@ module.exports.showMyWishList = (req, res, next) => {
             res.toJSON(services);
         })
         .catch((e) => next(e));
+
 }
 
 // para el market
@@ -182,3 +185,14 @@ module.exports.market = (req, res, next) => {
         })
         .catch((e) => next(e));
 };
+/*module.exports.wishlist = (req, res, next) => {
+    Like.find({ user: req.currentUser._id })
+    .populate("service")
+    .then((likes) => {
+      res.render("service/myWishList", {
+        products: likes.map((l) => {
+          return { ...l.toJSON().service, likedByUser: true };
+        }),
+      });
+    });
+};*/
