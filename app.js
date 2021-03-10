@@ -18,8 +18,15 @@ const sessionMiddleware = require('./middlewares/session.middleware')
 
 //express config 
 
+/*app.use((req, res, next) => {
+    if (req.originalUrl === '/service/webhook') {
+      next();
+    } else {
+      express.json()(req, res, next);
+    }
+  });*/
 const app = express();
-app.use(express.json());
+app.use(express.json()); //se requiere arriba para el uso del webhook
 app.use(express.urlencoded({
     extended: false
 }));
