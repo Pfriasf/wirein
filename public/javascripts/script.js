@@ -32,7 +32,11 @@ const like = (element) => {
     .then((response) => {
       element.classList.toggle("unliked");
       const likeNumber = element.querySelector("span");
-      likeNumber.innerText = Number(likeNumber.innerText) + response.data.add;
+      if ( response.data.add === 1){
+        likeNumber.innerText = 1;        
+      } else {
+        likeNumber.innerText = ""
+      }
     })
     .catch((e) => console.error("Error liking a service", e));
 };

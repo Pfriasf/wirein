@@ -199,7 +199,9 @@ module.exports.updateProfile = (req, res, next) => {
 //like
 
 module.exports.like = (req, res, next) => {
-  Like.findOne({ service: req.params.serviceId, user: req.currentUser._id })
+    const serviceID = req.params.serviceId 
+    const userID =  req.currentUser._id
+  Like.findOne({ service: serviceID, user: userID })
     .then((like) => {
       if (!like) {
         return Like.create({
@@ -211,7 +213,7 @@ module.exports.like = (req, res, next) => {
       } else {
         return Like.findByIdAndDelete(like._id).then(() => {
           // dislike
-          res.json({ add: -1 });
+          res.json({ add: 0 });
         });
       }
     })
