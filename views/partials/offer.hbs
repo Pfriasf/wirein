@@ -1,20 +1,18 @@
-<div class="container market">
 <div class="marketcard" id="{{_id}}">
     <div class="card" sytle="width:320px">
         <div class="row">
             <div class="card float-right">
                 <div class="row">
                     <div class="col-sm-5">
-                        <img id="user-photo-market" src="{{seller.image}}" alt="">
+                        <img id="user-photo-market" src="{{seller.image}}" alt="{{seller.username}}">
                     </div>
                     <div class="col-sm-7">
                         <div class="card-block">
                             <div class="col-md-11">
                                 <div class="card-block">
-                                    <h6 class="serviceName">{{seller.username}} </h6>
-                                    <h6 class="serviceName">{{service}}</h6>
-                                    <h6 class="description">{{description}}</h6>
-                                    <button class="readMore" id="toggle">Read More</button>
+                                    <h6 class="offerName">{{seller.username}} </h6>
+                                    <h6 class="offerName">{{service}}</h6>
+                                    <p class="offerDescription">{{description}}  <button class="readMore" id="toggle">Read More</button></p>
                                 </div>
                                 <div class="addbtn">
                                     <a href="/service/{{_id}}/edit" class="btn abtn btn-primary btn-sm btn-block">Edit</a>

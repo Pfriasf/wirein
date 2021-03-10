@@ -1,6 +1,6 @@
 <div class="marketcard">
     <div class="card" sytle="width:320px">
-        <div class="row" id=" service{{_id}}">
+        <div class="row" id="service{{_id}}">
             <div class="card float-right">
                 <div class="row">
                     <div class="col-sm-5">
@@ -17,7 +17,7 @@
 
                                 </div>
                                 <div class="addbtn">
-                                    <a href="/service/{{_id}}/add" class="btn abtn btn-primary btn-sm btn-block">Add</a>
+                                    <button onclick="checkoutButton('{{_id}}')" id="checkout-button" class="btn abtn btn-primary btn-sm btn-block">Add</button>
                                 </div>
                                 <div class="col-md-1 likebtn">
                                     <button onclick="like(this)" {{#if disabled}}disabled{{/if}}

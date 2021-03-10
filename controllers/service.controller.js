@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const Service = require("../models/Service.model");
 const Like = require("../models/Like.model")
+let stripe = require('stripe')(process.env.STRIPE_SECRET);
 
 
 
@@ -106,7 +107,7 @@ module.exports.contract = (req, res, next) => {
             shareWith: req.currentUser.id
         })
         .then(() => {
-            res.render("service/checkout")
+            res.render("service/contractMessage")
         })
         .catch((e) => next(e));
 }
@@ -116,10 +117,12 @@ module.exports.cancel = (req, res, next) => {
             shareWith: null
         })
         .then(() => {
-            res.render("service/checkout");
+            res.status(204).send("OK");
+            /*res.render("service/checkout");*/
         })
         .catch((e) => next(e));
-};
+}
+
 
 module.exports.showMyServices = (req, res, next) => {
     Service.find({
@@ -180,3 +183,64 @@ module.exports.market = (req, res, next) => {
         })
         .catch((e) => next(e));
 };
+
+
+module.exports.buy = (req, res, next) => {
+    Service.findById(req.params.id)
+      .then(service => {
+        if (!service) {
+          next(createError(404));
+        } else { 
+          return stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            mode: 'payment',
+            line_items: [{
+              amount: service.price * 100,
+              currency: 'USD',
+              name: service.service,
+              quantity: 1
+            }],
+            customer_email: req.currentUser.email,
+            success_url: `http://localhost:3003?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `http://localhost:3003/service/${service._id}`,
+            metadata: {
+             service: `${service._id}`
+            }
+          })
+            .then(session => {
+              res.json({
+                sessionId: session.id,
+              });
+            })
+        }
+      })
+      .catch(next)
+  }
+
+  /*module.exports.webhook = (req, res, next) => {
+    const sig = req.headers['stripe-signature'];
+  
+    let event;
+  
+    try {
+      event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_SIGNING_SECRET);//cuando sirva el webhook lo tenemos que buscar y poner en el .env
+      } catch (err) {
+      console.error(err)
+      return res.status(400).send(`Webhook Error: ${err.message}`);
+    }
+  
+    if (event.type === 'checkout.session.completed') {
+      const session = event.data.object;
+  
+      // Fulfill the purchase...
+      Service.findByIdAndUpdate(session.metadata.service, { available: false }, { new: true })
+      .then(() => {
+          console.log(`The service ${session.metadata.service} has been bought`)
+          res.status(200)
+        })
+      .catch(next)
+    } else {
+      res.status(200)
+    }
+  }*/
+

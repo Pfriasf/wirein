@@ -17,6 +17,8 @@
   .serviceSeller{
       color: black;
       font-size:1em !important;
+      padding: 0em !important;
+
   }
   
   .card-block,
@@ -24,6 +26,7 @@
   .serviceName{
       color: black;;
       font-size:1em !important;
+      padding: 0em !important;
   }
  
 .card-block,
@@ -31,6 +34,7 @@ p,
 .description{
     color: #2c5364;
     font-size: 1em !important;
+    padding: 0em !important;
 }
 
 .marketcard{

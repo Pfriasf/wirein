@@ -50,6 +50,10 @@ const serviceSchema = new mongoose.Schema(
       type: mongoose.SchemaTypes.ObjectId,
       ref: "User",
     },
+    available:{
+      type: Boolean, 
+      default: true,
+    },
   },
   {
     timestamps: true,
@@ -68,3 +72,4 @@ serviceSchema.virtual("likes", {
 const Service = mongoose.model("Service", serviceSchema);
 
 module.exports = Service;
+

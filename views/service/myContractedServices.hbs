@@ -1,11 +1,12 @@
+<a class="arrow" href="/"><i class="fa fa-arrow-left" aria-hidden="true"></i></a> 
 <div class="container market">
   <div class="orders">
     <nav class="nav nav-pills nav-fill">
-      <a class="nav-link oferta" aria-current="page" href="/service/my-services">My offers</a>
-      <a class="nav-link active orden" href="#">My orders</a>
-      <a class="nav-link deseo" href="/service/my-wish-list">Wish List</a>
+      <a class="nav-link oferta pildora" aria-current="page" href="/service/my-services">My offers</a>
+      <a class="nav-link active orden pildora" href="#">My orders</a>
+      <a class="nav-link deseo pildora" href="/service/my-wish-list">Wish List</a>
     </nav>
-    <div>
+    <div class="tab-pane fade show active pildora" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
       {{#if services.length}}
       {{#each services}}
       {{>order}}
@@ -15,4 +16,4 @@
       {{/if}}
     </div>
   </div>
-</div>
+</div> 
