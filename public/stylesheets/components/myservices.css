@@ -6,24 +6,6 @@
     border: none;
 }
 
-/*#offers, #orders, #wish{
-    color: white;
-
-}
-
-
-.offers{
-    width: 320px;
-}
-.offers,
-.card {
-    font-size: 1em;
-    overflow: hidden;
-    padding: 5;
-    border: none;
-    border-radius: .28571429rem;
-    margin-top:20px;
-}*/
 .order{
     width: 320px;
 }
@@ -36,11 +18,6 @@
     border-radius: .28571429rem;
     margin-top:20px;
 }
-/*.order{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}*/
 
 .orderCard{
 display: flex;
@@ -52,23 +29,59 @@ flex-direction: column;
 .pildora{
     color: white;
     text-align: center;
-   
+
 }
 
 .oferta{
     width: 10em;
     border: none !important;
     margin-right: 1em;
+    background-color: #3a5e7d;
  
 }
 .orden{
     width: 10em;
     border: none !important;
     margin-right: 1em;
-    background-color:
+    background-color: #3a5e7d;
 }
 .deseo{
     width: 10em;
     border: none !important;
-    background-color:
+    background-color:#3a5e7d;
 }
+
+
+#pills-home{
+    color: white;
+    margin-top: 2em;
+    font-size: 1.3rem;
+}
+
+  
+.card-block,
+h6,
+.orderName{
+    color: black;;
+    font-size:0.9em !important;
+}
+
+/*.card-block,
+p,
+.orderDescription{
+  color: #2c5364;
+  font-size: 0.7em !important;
+}*/
+  
+.card-block,
+h6,
+.offerName{
+    color: black;;
+    font-size:0.9em !important;
+}
+
+
+/*.offerDescription{
+  color: #2c5364;
+  font-size: 0.7em !important;
+}*/

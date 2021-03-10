@@ -30,8 +30,8 @@ app.use(express.json()); //se requiere arriba para el uso del webhook
 app.use(express.urlencoded({
     extended: false
 }));
-app.use(express.static("public"));
-//app.use('/public', express.static(__dirname + '/public')); //esta es la ruta que me sirve
+//app.use(express.static("public"));
+app.use('/public', express.static(__dirname + '/public')); //esta es la ruta que me sirve
 
 app.use(logger('dev'));
 app.use(session);
