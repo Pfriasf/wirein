@@ -1,27 +1,29 @@
 <div class="marketcard" id="{{_id}}">
     <div class="card" sytle="width:320px">
         <div class="row">
-                <div class="card float-right">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img id="user-photo-market" src="{{seller.image}}" alt="{{seller.username}}">
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="card-block">
-                                <div class="col-md-11">
-                                    <div class="card-block">
-                                        <h6 class="orderName"> {{seller.username}}</h6>
-                                        <h6 class="orderName">{{service}}</h6>
-                                        <p class="orderDescription">{{description}} <button class="readMore" id="toggle">Read More</button></p>
-                                    </div>
-                                     <div class="addbtn">
-                                         <button onclick="addCard('{{_id}}')" class="btn abtn btn-primary btn-sm btn-block">Add</button>
-                                     </div>
-                               </div>
+            <div class="card float-right">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <img id="user-photo-market" src="{{service.seller.image}}" alt="{{service.seller.username}}">
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="card-block">
+                            <div class="col-md-11">
+                                <div class="card-block">
+                                    <h6 class="orderName"> {{service.seller.username}}</h6>
+                                    <h6 class="orderName">{{service.service}}</h6>
+                                    <p class="orderDescription">{{service.description}} <button class="readMore"
+                                            id="toggle">Read More</button></p>
+                                </div>
+                                <div class="addbtn">
+                                    <button onclick="addCard('{{_id}}')"
+                                        class="btn abtn btn-primary btn-sm btn-block">Add</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-         </div>
-     </div>
+        </div>
+    </div>
 </div>
