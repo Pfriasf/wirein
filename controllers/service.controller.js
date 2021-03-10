@@ -150,13 +150,11 @@ module.exports.showMyContractedServices = (req, res, next) => {
 }
 
 module.exports.showMyWishList = (req, res, next) => {
-    Service.findById({
-            _id: req.params.id
-        })
-        .then((services) => {
-            res.toJSON(services);
-        })
-        .catch((e) => next(e));
+    Like.find({ user: req.currentUser._id })
+      .populate("service")
+      .then((likes) => {
+        console.log(likes)
+      });  
 }
 
 // para el market
