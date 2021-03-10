@@ -1,5 +1,6 @@
 const passport = require('passport')
 const router = require("express").Router();
+const express = require('express');
 
 const miscController = require("../controllers/misc.controller")
 const usersController = require('../controllers/users.controller')
@@ -61,7 +62,8 @@ router.get("/service/my-services", secure.isAuthenticated, serviceController.sho
 router.get("/service/my-contracted-services", secure.isAuthenticated, serviceController.showMyContractedServices);
 router.get("/service/my-wish-list", secure.isAuthenticated, serviceController.showMyWishList);
 
-
+router.post("/service/:id/buy", secure.isAuthenticated, serviceController.buy)
+/*router.post("/service/webhook", express.raw({type: 'application/json'}), productsController.webhook)*/
 
 
 router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);
@@ -72,6 +74,7 @@ router.get("/test", function (req, res, next) {
 router.get("/contact", function (req, res, next) {
     res.render("contact");
 });
+
 
 
 
