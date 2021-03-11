@@ -53,6 +53,7 @@ const serviceSchema = new mongoose.Schema(
       type: mongoose.SchemaTypes.ObjectId,
       ref: "User",
     },
+    
     available:{
       type: Boolean, 
       default: true,
@@ -66,6 +67,7 @@ const serviceSchema = new mongoose.Schema(
   }
 );
 
+
 serviceSchema.pre("save", function (next) {
   if (this.isModified("passwordCredential")) {
     const encryptedPassword = cryptr.encrypt(this.passwordCredential)
@@ -75,6 +77,7 @@ serviceSchema.pre("save", function (next) {
     next();
   }
 });
+
 
 serviceSchema.virtual("likes", {
   ref: "Like",
