@@ -10,12 +10,14 @@
                             <div class="card-block">
                                 <div class="col-md-11">
                                     <div class="card-block">
-                                        <h6 class="orderName"> {{seller.username}}</h6>
-                                        <h6 class="orderName">{{service}}</h6>
-                                        <p class="orderDescription">{{description}} <button class="readMore" id="toggle">Read More</button></p>
+                                        <h6 class="servicerName"> {{seller.username}}</h6>
+                                        <h6 class="serviceName">{{service}}</h6>
+                                         <h6 class="servicePrice">$ {{price}}</h6>
+                                        <p class="description">{{description}} <button class="readMore" id="toggle">Read More</button></p>
                                     </div>
                                      <div class="addbtn">
                                          <button onclick="cancelCard('{{_id}}')" class="btn abtn btn-primary btn-sm btn-block">Cancel</button>
+                                          <a href="/service/{{_id}}/access" class="btn abtn btn-primary btn-sm btn-block">View</a>
                                      </div>
                                </div>
                         </div>

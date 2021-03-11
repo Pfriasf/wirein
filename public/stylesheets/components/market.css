@@ -24,11 +24,18 @@
   .card-block,
   h6,
   .serviceName{
-      color: black;;
+      color: black;
       font-size:1em !important;
       padding: 0em !important;
   }
- 
+  .card-block,
+  h6,
+  .servicePrice{
+      color: #2c5364;
+      font-size:1em !important;
+      padding: 0em !important;
+  }
+
 .card-block,
 p,
 .description{
@@ -39,8 +46,10 @@ p,
 
 .marketcard{
     width: 320px;
+    margin: auto;
+  
 }
-.marketcard,
+.marketcard
 .card {
     font-size: 1em;
     overflow: hidden;
