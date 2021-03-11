@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const Service = require("../models/Service.model");
 const Like = require("../models/Like.model");
 let stripe = require("stripe")(process.env.STRIPE_SECRET);
+const Cryptr = require("cryptr")
+const cryptr = new Cryptr(process.env.CP_KEY)
 
 module.exports.showMenu = (req, res, next) => {
     res.render("service/menu");
@@ -37,11 +39,15 @@ module.exports.doCreate = (req, res, next) => {
 };
 
 module.exports.accessToService = (req, res, next) => {
+   
     const serviceID = req.params.id
-    Service.find({ _id: serviceID })
+    Service.findOne({ _id: serviceID })
       .then((service) => {
-        const { userCredential, passwordCredential } = service;
-        res.render("service/access", { userCredential, passwordCredential });
+        let { userCredential, passwordCredential } = service;
+        console.log("esto tiene ver", service)
+        passwordCredential = cryptr.decrypt(passwordCredential);
+      
+        res.render("service/access", { userCredential, passwordCredential }); 
       })
       .catch((e) => next(e));
 }
