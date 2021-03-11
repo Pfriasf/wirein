@@ -1,4 +1,7 @@
 const mongoose = require("mongoose")
+const Cryptr = require("cryptr")
+const cryptr = new Cryptr(process.env.CP_KEY)
+
 const User = require("./User.model")
 
 
@@ -63,11 +66,22 @@ const serviceSchema = new mongoose.Schema(
   }
 );
 
+serviceSchema.pre("save", function (next) {
+  if (this.isModified("passwordCredential")) {
+    const encryptedPassword = cryptr.encrypt(this.passwordCredential)
+    this.passwordCredential = encryptedPassword;
+    next()
+  } else {
+    next();
+  }
+});
+
 serviceSchema.virtual("likes", {
   ref: "Like",
   localField: "_id",
   foreignField: "service",
 });
+
 
 const Service = mongoose.model("Service", serviceSchema);
 

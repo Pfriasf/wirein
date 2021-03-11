@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-mongoose.set("useFindAndModify", true);
 
 const bcrypt = require("bcrypt");
 const {

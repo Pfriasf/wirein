@@ -23,7 +23,7 @@ module.exports.doCreate = (req, res, next) => {
     req.body.seller = req.currentUser.id;
 
     Service.create(req.body)
-        .then((service) => {
+        .then(() => {
             res.redirect("/service/my-services");
         })
         .catch((e) => {
@@ -35,6 +35,16 @@ module.exports.doCreate = (req, res, next) => {
             }
         });
 };
+
+module.exports.accessToService = (req, res, next) => {
+    const serviceID = req.params.id
+    Service.find({ _id: serviceID })
+      .then((service) => {
+        const { userCredential, passwordCredential } = service;
+        res.render("service/access", { userCredential, passwordCredential });
+      })
+      .catch((e) => next(e));
+}
 
 module.exports.readServices = (req, res, next) => {
     const serviceType = req.params.type;
@@ -118,6 +128,7 @@ module.exports.contract = (req, res, next) => {
             shareWith: req.currentUser.id,
         })
         .then(() => {
+            console.log("service updated")
             res.render("service/contractMessage");
         })
         .catch((e) => next(e));
