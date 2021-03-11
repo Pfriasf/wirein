@@ -84,6 +84,7 @@ module.exports.readServices = (req, res, next) => {
 module.exports.edit = (req, res, next) => {
     Service.findById(req.params.id)
         .then((service) => {
+            console.log(service)
         if (
             !service ||
             service.seller.toString() !== req.currentUser.id.toString()
@@ -102,7 +103,8 @@ module.exports.doEdit = (req, res, next) => {
     const service = req.body;
     const id = req.params.id;
     service.passwordCredential = cryptr.encrypt(service.passwordCredential);
-    Service.findOneAndUpdate(id, service, {
+    console.log(service)
+    Service.findByIdAndUpdate(id, service, {
             new: true,
         })
         .then(() =>
@@ -135,7 +137,7 @@ module.exports.contract = (req, res, next) => {
 
     Like.deleteMany({ service: serviceID })
     .then(() => {
-        Service.findOneAndUpdate(serviceID, {
+        Service.findByIdAndUpdate(serviceID, {
                 shareWith: req.currentUser.id,
                 available: false
             })
@@ -147,7 +149,7 @@ module.exports.contract = (req, res, next) => {
 };
 
 module.exports.cancel = (req, res, next) => {
-    Service.findOneAndUpdate(req.params.id, {
+    Service.findByIdAndUpdate(req.params.id, {
             shareWith: null,
             available: true
         })
