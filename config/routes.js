@@ -5,7 +5,6 @@ const express = require('express');
 const miscController = require("../controllers/misc.controller")
 const usersController = require('../controllers/users.controller')
 const serviceController = require("../controllers/service.controller")
-const chatController = require("../controllers/chat.controller")
 const secure = require("../middlewares/secure.middleware");
 const mailController = require('../controllers/mail.controller');
 const upload = require('./storage.config')
@@ -46,6 +45,8 @@ router.get("/service/menu", secure.isAuthenticated, serviceController.showMenu);
 
 router.get("/service/create", secure.isAuthenticated, serviceController.create);
 router.post("/service/create", secure.isAuthenticated, serviceController.doCreate);
+
+router.get("/service/:id/access", secure.isAuthenticated, serviceController.accessToService)
 
 router.get("/service/list/:type", secure.isAuthenticated, serviceController.readServices);
 
