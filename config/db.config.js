@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect("mongodb://localhost/wiredin", {
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/wiredin", {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false
-
+    useFindAndModify: false,
   })
   .then((x) =>
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
