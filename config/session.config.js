@@ -12,7 +12,7 @@ const session = expressSession({
         maxAge: process.env.SESS_MAX_AGE || 3600000
     },
     store:  MongoStore.create({
-        mongoUrl:"mongodb://localhost/wiredin",
+        mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/wiredin",
         mongooseConnection: mongoose.connection,
         ttl: process.env.SESS_MAX_AGE || 3600000,
     })
