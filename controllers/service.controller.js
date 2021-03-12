@@ -222,14 +222,14 @@ module.exports.buy = (req, res, next) => {
                       },
                     ],
                     customer_email: req.currentUser.email,
-                    success_url: `http://localhost:3003/service/${serviceID}/add`,
-                    cancel_url: `http://localhost:3003/service/menu`,
+                    success_url: `${process.env.HOST}/service/${serviceID}/add` || `http://localhost:3003/service/${serviceID}/add`,
+                    cancel_url: `${process.env.HOST}/service/menu` ||`http://localhost:3003/service/menu`,
                     metadata: {
                       service: `${serviceID}`,
                     },
                   })
                   .then((session) => {
-                      console.log(session)
+                    console.log(session);
                     res.json({
                       sessionId: session.id,
                     });
