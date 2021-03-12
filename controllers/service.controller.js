@@ -239,3 +239,6 @@ module.exports.buy = (req, res, next) => {
         .catch(next);
 };
 
+module.exports.showTerms = (req, res, next) => {
+    res.render("terms");
+}
