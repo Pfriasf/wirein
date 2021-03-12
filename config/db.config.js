@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/wiredin", {
+ .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/wiredin", {
     useCreateIndex: true,
     useNewUrlParser: true,
     useFindAndModify: false,
