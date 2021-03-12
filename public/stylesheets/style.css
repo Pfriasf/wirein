@@ -11,40 +11,22 @@
 @import url("./components/contact.css");
 @import url("./components/mails.css");
 @import url("./components/myservices.css");
+@import url("./components/access.css");
+@import url("./components/about.css");
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
-/*body {
-    font-family: 'Roboto', sans-serif;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #bdc2be, #3a5e65);
-background-size: 400% 400%;
-animation: gradient 15s ease infinite;
-}
-
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}*/
 
  :root {
 	 --ring-size: 150px;
 	 --angle: -360deg;
 }
 
- body {
-	 background: linear-gradient(to top, #0f2027, #203a43, #2c5364);
-	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	background-position: center center;
+ body { background: linear-gradient(to top, #0f2027, #203a43, #2c5364);
+	/*W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+;*/
+	/*background-position: center center;*/
 	background-repeat: repeat;
 	background-size: 100vw 100vh;
 	background-attachment: fixed;
+
 }
 
 

@@ -1,128 +1,129 @@
-                    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
-                    * {
-                        margin: 0;
-                        padding: 0;
-                        box-sizing: border-box;
-                    }
-                    
-                    h2,
-                    .board {
-                        text-align: center;
-                        color: white;
-                        font-family: 'Roboto', sans-serif;
-                        padding-bottom: 2em;
-                    }
-                    
-                    .boards {
-                        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-                        border-radius: 15px;
-                    }
-                    
-                    .card-title {
-                        color: white;
-                        font-weight: bold;
-                        text-decoration: none;
-                    }
-                    
-                    .one {
-                        width: 192px;
-                        height: 143px;
-                        margin: 5px;
-                        overflow: hidden;
-                        animation: color-loop 18s infinite;
-                    }
-                    
-                    .two {
-                        width: 192px;
-                        height: 143px;
-                        margin: 5px;
-                        overflow: hidden;
-                        animation: color-loop 18s infinite;
-                    }
-                    
-                    @keyframes color-loop {
-                        0% {
-                            background: #2CAB5B;
-                        }
-                        25% {
-                            background: #FABC03;
-                        }
-                        50% {
-                            background: #ED4B40;
-                        }
-                        75% {
-                            background: #4286F3;
-                        }
-                        100% {
-                            background: #2CAB5B;
-                        }
-                    }
-                    
-                    *::before,
-                    *::after {
-                        box-sizing: border-box;
-                    }
-                    
-                    .card-perspective {
-                        perspective: 700px;
-                        /*You can change the origin if you want e.g. perspective-origin: top;*/
-                        position: relative;
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: space-between;
-                        word-wrap: break-word;
-                        background-color: transparent !important;
-                        background-clip: border-box;
-                        border: 0px solid transparent !important;
-                        border-radius: .25rem;
-                        cursor: pointer;
-                    }
-                    
-                    .card-perspective::before {
-                        transform: rotateY(-15deg) translateX(16px);
-                    }
-                    
-                    .card-perspective::after {
-                        transform: rotateY(-15deg) translateX(32px);
-                    }
-                    
-                    .card-perspective .card-inner {
-                        transform: rotateY(-15deg);
-                    }
-                    
-                    .card-perspective:hover::before {
-                        transform: rotateY(15deg) translateX(-16px);
-                    }
-                    
-                    .card-perspective:hover::after {
-                        transform: rotateY(15deg) translateX(-32px);
-                    }
-                    
-                    .card-perspective:hover .card-inner {
-                        transform: rotateY(15deg);
-                    }
-                    
-                    .card::before,
-                    .card::after {
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                    }
-                    
-                    .card::before,
-                    .card::after,
-                    .card .card-inner {
-                        border-radius: 5px;
-                        transition: transform 0.3s;
-                    }
-                    
-                    .card::before,
-                    .card-inner {
-                        z-index: 1;
-                    }
-                    
-                    .card-inner {
-                        position: relative;
-                        padding: 3rem;
-                    }
+   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+   * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+   }
+   
+   h2,
+   .board {
+       text-align: center;
+       color: white;
+       font-family: 'Roboto', sans-serif;
+       padding-bottom: 2em;
+   }
+   
+   .boards {
+       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+       border-radius: 15px;
+       margin-top: 6rem !important;
+   }
+   
+   .card-title {
+       color: white;
+       font-weight: bold;
+       text-decoration: none;
+   }
+   
+   .one {
+       width: 192px;
+       height: 143px;
+       margin: 5px;
+       overflow: hidden;
+       animation: color-loop 18s infinite;
+   }
+   
+   .two {
+       width: 192px;
+       height: 143px;
+       margin: 5px;
+       overflow: hidden;
+       animation: color-loop 18s infinite;
+   }
+   
+   @keyframes color-loop {
+       0% {
+           background: #2CAB5B;
+       }
+       25% {
+           background: #FABC03;
+       }
+       50% {
+           background: #ED4B40;
+       }
+       75% {
+           background: #4286F3;
+       }
+       100% {
+           background: #2CAB5B;
+       }
+   }
+   
+   *::before,
+   *::after {
+       box-sizing: border-box;
+   }
+   
+   .card-perspective {
+       perspective: 700px;
+       /*You can change the origin if you want e.g. perspective-origin: top;*/
+       position: relative;
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+       word-wrap: break-word;
+       background-color: transparent !important;
+       background-clip: border-box;
+       border: 0px solid transparent !important;
+       border-radius: .25rem;
+       cursor: pointer;
+   }
+   
+   .card-perspective::before {
+       transform: rotateY(-15deg) translateX(16px);
+   }
+   
+   .card-perspective::after {
+       transform: rotateY(-15deg) translateX(32px);
+   }
+   
+   .card-perspective .card-inner {
+       transform: rotateY(-15deg);
+   }
+   
+   .card-perspective:hover::before {
+       transform: rotateY(15deg) translateX(-16px);
+   }
+   
+   .card-perspective:hover::after {
+       transform: rotateY(15deg) translateX(-32px);
+   }
+   
+   .card-perspective:hover .card-inner {
+       transform: rotateY(15deg);
+   }
+   
+   .card::before,
+   .card::after {
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+   }
+   
+   .card::before,
+   .card::after,
+   .card .card-inner {
+       border-radius: 5px;
+       transition: transform 0.3s;
+   }
+   
+   .card::before,
+   .card-inner {
+       z-index: 1;
+   }
+   
+   .card-inner {
+       position: relative;
+       padding: 3rem;
+   }
