@@ -87,21 +87,25 @@ $(document).ready(function () {
 
 //read more
 
-$(document).ready(function () {
-  $("#toggle").click(function () {
-    var elem = $("#toggle").text();
-    if (elem == "Read More") {
-      //Stuff to do when btn is in the read more state
-      $("#toggle").text("Read Less");
-      $("#text").slideDown();
-    } else {
-      //Stuff to do when btn is in the read less state
-      $("#toggle").text("Read More");
-      $("#text").slideUp();
-    }
-  });
-});
+$(document).ready(function() {
+  var maxLength = 40;
+  $(".readMore").each(function () {
+    var myStr = $(this).text();
 
+    if ($.trim(myStr).length > maxLength) {
+      var newStr = myStr.substring(0, maxLength);
+            var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+            $(this).empty().html(newStr);
+            $(this).append(' <a <a href="javascript:void(0); class="read-more">Read more...</a>');
+            $(this).append('<span class="more-text">' + removedStr + '</span>');
+        }
+    });
+    $(".readMore").click(function(){
+        $(this).siblings(".more-text").contents().unwrap();
+        $(this).remove();
+    });
+});
+  
 
 // para que se borré con axios 
 const deleteCard = (id) => {

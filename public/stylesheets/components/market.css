@@ -106,3 +106,7 @@ p,
     color:#3cc8a8;
     font-size: 0.6rem;
 }
+
+.readMore .more-text{
+    display: none;
+}
