@@ -8,9 +8,12 @@ html, body{
   font-weight: 800;
 }
 
+my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
 
-svg {
-    display: block;
+svg {    
     font: 10.5em 'Montserrat';
     width: 960px;
     height: 300px;

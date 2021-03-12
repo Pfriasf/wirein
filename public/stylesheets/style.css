@@ -30,15 +30,12 @@
 
 
  .holder {
-	 top: 10em;
-	 left: 0;
-	 position:fixed;
+	 position: absolute;
+     left: 50%;
+     top: 50%;	
 	 height: 20vh;
-	 width: 100%;
-	 display: flex;
-	 justify-content: center;
-	 align-items: center;
 }
+
  .ring {
 	 position: relative;
 	 width: 0px;
