@@ -1,12 +1,16 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost/wiredin", {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  })
+  .connect(
+    "mongodb+srv://wiredinadmin:jbbtU8Db50gNBnEZ@cluster0.covy2.mongodb.net/wiredin?retryWrites=true&w=majority" ||
+      "mongodb://localhost/wiredin",
+    {
+      useCreateIndex: true,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+    }
+  )
   .then((x) =>
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   )
