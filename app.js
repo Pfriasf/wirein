@@ -29,7 +29,12 @@ app.use(express.static("public"));
 app.use(logger('dev'));
 app.use(session);
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(
+  passport.session({
+    secret: "Shhh.. This is a secret",
+    cookie: { secure: true },
+  })
+);
 app.use(bodyParser.urlencoded({
     extended: false
 }));

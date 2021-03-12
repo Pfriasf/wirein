@@ -4,7 +4,7 @@
     "description": "It is an app to connect people who want to share streaming services",
     "main": "app.js",
     "scripts": {
-        "start": "node ./bin/www",
+        "start": "node app.js",
         "dev": "nodemon -e hbs,css,js app.js"
     },
     "repository": {
