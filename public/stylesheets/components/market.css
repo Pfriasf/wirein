@@ -105,13 +105,47 @@ p,
     margin-left: 5.2rem;
 }
 
-.readMore{
-    background-color: transparent;
-    border: 0px solid transparent;
-    color:#3cc8a8;
-    font-size: 0.6rem;
-}
+ .addReadMore.showlesscontent .SecSec,
+    .addReadMore.showlesscontent .readLess {
+        display: none;
+    }
 
-.readMore .more-text{
-    display: none;
-}
+    .addReadMore.showmorecontent .readMore {
+        display: none;
+    }
+
+    .addReadMore .readMore,
+    .addReadMore .readLess {
+        font-weight: bold;
+        margin-left: 1px;
+        color: #1d5c4e;
+        cursor: pointer;
+        font-size:smaller !important;
+    }
+
+    .addReadMoreWrapTxt.showmorecontent .SecSec,
+    .addReadMoreWrapTxt.showmorecontent .readLess {
+        display: block;
+    }
+ .addReadMore.showlesscontent .SecSec,
+    .addReadMore.showlesscontent .readLess {
+        display: none;
+    }
+
+    .addReadMore.showmorecontent .readMore {
+        display: none;
+    }
+
+    .addReadMore .readMore,
+    .addReadMore .readLess {
+        font-weight: bold;
+        margin-left: 1px;
+        color: #1d5c4e;
+        cursor: pointer;
+        font-size:smaller !important;
+    }
+
+    .addReadMoreWrapTxt.showmorecontent .SecSec,
+    .addReadMoreWrapTxt.showmorecontent .readLess {
+        display: block;
+    }

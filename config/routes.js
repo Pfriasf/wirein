@@ -64,6 +64,10 @@ router.get("/service/my-wish-list", secure.isAuthenticated, serviceController.sh
 
 router.post("/service/:id/buy", secure.isAuthenticated, serviceController.buy)
 
+router.get("/about", function (req, res, next) {
+    res.render("about");
+});
+
 router.get("/terms", serviceController.showTerms);
 
 router.post('/email', mailController.contactMail);
