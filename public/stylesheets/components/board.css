@@ -26,6 +26,7 @@
    }
    
    .one {
+       padding-top: 1rem;
        width: 192px;
        height: 143px;
        margin: 5px;
@@ -34,6 +35,7 @@
    }
    
    .two {
+       padding-top: 1rem;
        width: 192px;
        height: 143px;
        margin: 5px;
