@@ -11,6 +11,8 @@ const logger = require('morgan');
 const path = require("path");
 const passport = require('passport');
 const bodyParser = require('body-parser');
+const flash = require("connect-flash");
+
 
 const router = require("./config/routes")
 const session = require("./config/session.config");
@@ -28,6 +30,7 @@ app.use(express.static("public"));
 
 app.use(logger('dev'));
 app.use(session);
+app.use(flash());
 app.use(passport.initialize());
 app.use(
   passport.session({
@@ -49,6 +52,7 @@ app.set('view engine', 'hbs');
 app.use((req, res, next) => {
     req.currentUser = req.user;
     res.locals.currentUser = req.user;
+    res.locals.flashMessage = req.flash("flashMessage");
     next()
 })
 

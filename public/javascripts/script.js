@@ -161,3 +161,10 @@ const cancelCard = (id) => {
      .catch((e) => console.error("Error liking a service", e));
 
 }
+
+setTimeout(() => {
+  document.querySelectorAll(".toast").forEach((toast) => {
+    console.log(toast);
+    new bootstrap.Toast(toast).hide();
+  });
+}, 5000);

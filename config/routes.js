@@ -20,16 +20,12 @@ router.post("/register", secure.isNotAuthenticated, usersController.doRegister);
 router.get("/login", secure.isNotAuthenticated, usersController.login);
 router.post("/login", secure.isNotAuthenticated, usersController.doLogin);
 
-router.get("/activate/:token", secure.isNotAuthenticated, usersController.activate); // esto es la ruta para que me devuelva a mi servidor lo del mail de activación
+router.get("/activate/:token", secure.isNotAuthenticated, usersController.activate); 
 
-router.get('/authenticate/google', passport.authenticate('google-auth', {
-    scope: GOOGLE_SCOPES
-}))
+router.get('/authenticate/google', passport.authenticate('google-auth', { scope: GOOGLE_SCOPES }))
 router.get('/authenticate/google/cb', usersController.doLoginGoogle)
 
-router.get("/authenticate/facebook", passport.authenticate("facebook-auth", {
-    scope: "email"
-}));
+router.get("/authenticate/facebook", passport.authenticate("facebook-auth", { scope: "email" }));
 router.get("/authenticate/facebook/cb", usersController.doLoginFacebook);
 
 router.get("/authenticate/twitter", passport.authenticate("twitter-auth"));
@@ -39,6 +35,10 @@ router.post("/logout", secure.isAuthenticated, usersController.logout);
 
 router.get("/profile", secure.isAuthenticated, usersController.profile);
 router.post("/profile", secure.isAuthenticated, upload.single("image"), usersController.updateProfile);
+
+router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);
+
+router.get("/contact", usersController.contact);
 
 //Service
 router.get("/service/menu", secure.isAuthenticated, serviceController.showMenu);
@@ -58,33 +58,17 @@ router.get("/service/:id/delete", secure.isAuthenticated, serviceController.dele
 router.get("/service/:id/add", secure.isAuthenticated, serviceController.contract)
 router.get("/service/:id/cancel", secure.isAuthenticated, serviceController.cancel)
 
-
 router.get("/service/my-services", secure.isAuthenticated, serviceController.showMyServices);
 router.get("/service/my-contracted-services", secure.isAuthenticated, serviceController.showMyContractedServices);
 router.get("/service/my-wish-list", secure.isAuthenticated, serviceController.showMyWishList);
 
 router.post("/service/:id/buy", secure.isAuthenticated, serviceController.buy)
-/*router.post("/service/webhook", express.raw({type: 'application/json'}), productsController.webhook)*/
-
-
-router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);
-
-router.get("/test", function (req, res, next) {
-    res.render("partials/about");
-});
-router.get("/contact", function (req, res, next) {
-    res.render("contact");
-});
-
-router.get("/terms", function (req, res, next) {
-    res.render("terms");
-});
 
 router.get("/about", function (req, res, next) {
     res.render("about");
 });
 
-
+router.get("/terms", serviceController.showTerms);
 
 router.post('/email', mailController.contactMail);
 router.get('/email/sent', mailController.sentMailSuccess);
