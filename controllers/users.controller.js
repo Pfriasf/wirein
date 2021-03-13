@@ -220,5 +220,8 @@ module.exports.like = (req, res, next) => {
     .catch((e) => next(e));
 };
 
+module.exports.contact = (req, res, next) => {
+    res.render("contact");
+}
 
 

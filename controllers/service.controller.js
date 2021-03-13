@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const Cryptr = require("cryptr")
+const flash = require("connect-flash");
+
 
 const Service = require("../models/Service.model");
 const Like = require("../models/Like.model");
@@ -27,6 +29,7 @@ module.exports.doCreate = (req, res, next) => {
 
     Service.create(req.body)
         .then(() => {
+            req.flash("flashMessage", "Service created 🥳");
             res.redirect("/service/my-services");
         })
         .catch((e) => {
@@ -40,44 +43,52 @@ module.exports.doCreate = (req, res, next) => {
 };
 
 module.exports.accessToService = (req, res, next) => {
-   
+
     const serviceID = req.params.id
-    Service.findOne({ _id: serviceID })
-      .then((service) => {
-        let { userCredential, passwordCredential } = service;
-        passwordCredential = cryptr.decrypt(passwordCredential);
-      
-        res.render("service/access", { userCredential, passwordCredential }); 
-      })
-      .catch((e) => next(e));
+    Service.findOne({
+            _id: serviceID
+        })
+        .then((service) => {
+            let {
+                userCredential,
+                passwordCredential
+            } = service;
+            passwordCredential = cryptr.decrypt(passwordCredential);
+
+            res.render("service/access", {
+                userCredential,
+                passwordCredential
+            });
+        })
+        .catch((e) => next(e));
 }
 
 module.exports.readServices = (req, res, next) => {
     const serviceType = req.params.type;
     Service.find({
-      service: serviceType,
-      seller: {
-        $ne: req.currentUser.id
-      },
-      available : true
-    })
-      .populate("seller")
-      .populate("likes")
-      .then((services) => {
-        services = services.map((service, i) => {
-          service = service.toJSON();
-          service.likedByUser = req.currentUser
-            ? service.likes.some(
-                (l) => l.user.toString() == req.currentUser._id.toString()
-              )
-            : false;
-          return service;
-        });
-        res.render("service/market", {
-          services,
-        });
-      })
-      .catch((e) => next(e));
+            service: serviceType,
+            seller: {
+                $ne: req.currentUser.id
+            },
+            available: true
+        })
+        .populate("seller")
+        .populate("likes")
+        .then((services) => {
+            services = services.map((service, i) => {
+                service = service.toJSON();
+                service.likedByUser = req.currentUser ?
+                    service.likes.some(
+                        (l) => l.user.toString() == req.currentUser._id.toString()
+                    ) :
+                    false;
+                return service;
+            });
+            res.render("service/market", {
+                services,
+            });
+        })
+        .catch((e) => next(e));
 
 };
 
@@ -85,31 +96,31 @@ module.exports.edit = (req, res, next) => {
     Service.findById(req.params.id)
         .then((service) => {
             console.log(service)
-        if (
-            !service ||
-            service.seller.toString() !== req.currentUser.id.toString()
-        ) {
-            res.redirect("/");
-        } else {
-            service.passwordCredential = cryptr.decrypt(service.passwordCredential);
-            res.render("service/service", {
-                service,
-            });
-        }
-    });
+            if (
+                !service ||
+                service.seller.toString() !== req.currentUser.id.toString()
+            ) {
+                res.redirect("/");
+            } else {
+                service.passwordCredential = cryptr.decrypt(service.passwordCredential);
+                res.render("service/service", {
+                    service,
+                });
+            }
+        });
 };
 
 module.exports.doEdit = (req, res, next) => {
     const service = req.body;
     const id = req.params.id;
     service.passwordCredential = cryptr.encrypt(service.passwordCredential);
-    console.log(service)
     Service.findByIdAndUpdate(id, service, {
             new: true,
         })
-        .then(() =>
+        .then(() => {
+            req.flash("flashMessage", "Service updated ✅");
             res.redirect("/service/my-services")
-        )
+        })
         .catch(() =>
             res.render("service/service", {
                 service,
@@ -135,17 +146,20 @@ module.exports.delete = (req, res, next) => {
 module.exports.contract = (req, res, next) => {
     const serviceID = req.params.id
 
-    Like.deleteMany({ service: serviceID })
-    .then(() => {
-        Service.findByIdAndUpdate(serviceID, {
-                shareWith: req.currentUser.id,
-                available: false
-            })
-            .then(() => {
-                res.redirect("/service/my-contracted-services");
-            })
-    })
-    .catch((e) => next(e));
+    Like.deleteMany({
+            service: serviceID
+        })
+        .then(() => {
+            Service.findByIdAndUpdate(serviceID, {
+                    shareWith: req.currentUser.id,
+                    available: false
+                })
+                .then(() => {
+                    req.flash("flashMessage", "Service contracted 🤑");
+                    res.redirect("/service/my-contracted-services");
+                })
+        })
+        .catch((e) => next(e));
 };
 
 module.exports.cancel = (req, res, next) => {
@@ -154,6 +168,7 @@ module.exports.cancel = (req, res, next) => {
             available: true
         })
         .then(() => {
+            req.flash("flashMessage", "Service canceled ❌");
             res.status(204).send("OK");
         })
         .catch((e) => next(e));
@@ -210,32 +225,33 @@ module.exports.buy = (req, res, next) => {
                 next(createError(404));
             } else {
                 return stripe.checkout.sessions
-                  .create({
-                    payment_method_types: ["card"],
-                    mode: "payment",
-                    line_items: [
-                      {
-                        amount: service.price * 100,
-                        currency: "USD",
-                        name: service.service,
-                        quantity: 1,
-                      },
-                    ],
-                    customer_email: req.currentUser.email,
-                    success_url: `${process.env.HOST}/service/${serviceID}/add` || `http://localhost:3003/service/${serviceID}/add`,
-                    cancel_url: `${process.env.HOST}/service/menu` ||`http://localhost:3003/service/menu`,
-                    metadata: {
-                      service: `${serviceID}`,
-                    },
-                  })
-                  .then((session) => {
-                    console.log(session);
-                    res.json({
-                      sessionId: session.id,
+                    .create({
+                        payment_method_types: ["card"],
+                        mode: "payment",
+                        line_items: [{
+                            amount: service.price * 100,
+                            currency: "USD",
+                            name: service.service,
+                            quantity: 1,
+                        }, ],
+                        customer_email: req.currentUser.email,
+                        success_url: `${process.env.HOST}/service/${serviceID}/add` || `http://localhost:3003/service/${serviceID}/add`,
+                        cancel_url: `${process.env.HOST}/service/menu` || `http://localhost:3003/service/menu`,
+                        metadata: {
+                            service: `${serviceID}`,
+                        },
+                    })
+                    .then((session) => {
+                        console.log(session);
+                        res.json({
+                            sessionId: session.id,
+                        });
                     });
-                  });
             }
         })
         .catch(next);
 };
 
+module.exports.showTerms = (req, res, next) => {
+    res.render("terms");
+}

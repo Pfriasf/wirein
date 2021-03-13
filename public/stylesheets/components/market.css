@@ -47,6 +47,8 @@ p,
 .marketcard{
     width: 320px;
     margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
   
 }
 .marketcard
@@ -95,6 +97,9 @@ p,
 }
 
 .arrow{
+    position: absolute;
+    top: 8%;
+    
     font-size: 2rem;
     color: #3cc8a8;
     margin-left: 5.2rem;
