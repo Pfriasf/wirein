@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+
+.card-flip > div {
+    backface-visibility: hidden;
+    transition: transform 300ms;
+    transition-timing-function: linear;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+  }
+  
+  .card-front {
+    transform: rotateY(0deg);
+    
+  }
+  .fcolor
+  {background-color:radial-gradient(circle, rgba(22,148,201,1) 0%, rgba(14,180,136,1) 100%) !important;}
+  .card-back {
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0;
+  }
+  
+  .card-flip:hover .card-front {
+    transform: rotateY(-180deg);
+  }
+    
+  .card-flip:hover .card-back {
+    transform: rotateY(0deg);
+  }
+
+  .card-body{
+    height: 35vh;
+  }
+
+  .card-title{
+      color: rgba(14,180,136,1);
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+  }
+  .card-titles{
+    color:blanchedalmond;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}

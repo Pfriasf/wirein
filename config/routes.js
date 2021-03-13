@@ -70,7 +70,7 @@ router.post("/service/:id/buy", secure.isAuthenticated, serviceController.buy)
 router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);
 
 router.get("/test", function (req, res, next) {
-    res.render("about");
+    res.render("partials/about");
 });
 router.get("/contact", function (req, res, next) {
     res.render("contact");
