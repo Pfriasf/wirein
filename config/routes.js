@@ -64,7 +64,6 @@ router.get("/service/my-contracted-services", secure.isAuthenticated, serviceCon
 router.get("/service/my-wish-list", secure.isAuthenticated, serviceController.showMyWishList);
 
 router.post("/service/:id/buy", secure.isAuthenticated, serviceController.buy)
-/*router.post("/service/webhook", express.raw({type: 'application/json'}), productsController.webhook)*/
 
 
 router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);
