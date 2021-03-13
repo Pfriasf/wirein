@@ -70,7 +70,6 @@ app.use((error, req, res, next) => {
     res.render("error", error);
 });
 
-console.log(process.env.HOST)
 // Initialization on port
 
 const PORT = process.env.PORT || 3003;

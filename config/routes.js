@@ -80,6 +80,9 @@ router.get("/terms", function (req, res, next) {
     res.render("terms");
 });
 
+router.get("/about", function (req, res, next) {
+    res.render("about");
+});
 
 
 
