@@ -11,7 +11,9 @@
     filter: grayscale();
   }
 
-  
+  .market{
+    margin-bottom: 40px;
+  }
   .card-block,
   h6,
   .serviceSeller{
@@ -48,7 +50,7 @@ p,
     width: 320px;
     margin: auto;
     margin-top: 40px;
-    margin-bottom: 40px;
+   
   
 }
 .marketcard

@@ -64,11 +64,24 @@ router.get("/service/my-wish-list", secure.isAuthenticated, serviceController.sh
 
 router.post("/service/:id/buy", secure.isAuthenticated, serviceController.buy)
 
+
+router.get("/service/:serviceId/like", secure.isAuthenticated, usersController.like);
+
+router.get("/test", function (req, res, next) {
+    res.render("partials/about");
+});
+router.get("/contact", function (req, res, next) {
+    res.render("contact");
+});
+
+router.get("/terms", function (req, res, next) {
+    res.render("terms");
+});
+
 router.get("/about", function (req, res, next) {
     res.render("about");
 });
 
-router.get("/terms", serviceController.showTerms);
 
 router.post('/email', mailController.contactMail);
 router.get('/email/sent', mailController.sentMailSuccess);
