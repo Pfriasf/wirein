@@ -20,9 +20,9 @@ module.exports.doRegister = (req, res, next) => {
         })
     }
 
-    //que no se repitan los usuarios y mail
+  
     User.findOne({
-            //email: req.body.email
+            
             username: req.body.username
         })
         .then((user) => {
@@ -33,7 +33,7 @@ module.exports.doRegister = (req, res, next) => {
             } else {
                 User.findOne({
                         email: req.body.email
-                            // username: req.body.username
+                            
                     })
                     .then((user) => {
                         if (user) {
@@ -43,11 +43,11 @@ module.exports.doRegister = (req, res, next) => {
 
                         } else {
                             User.create(req.body)
-                                .then((user) => { //la u es de user
+                                .then((user) => { 
 
-                                    //AQUI SE PONE LA LOGICA PARA ENVIAR EL MAIL DE ACTIVACION
+                                 
 
-                                    sendActivationEmail(user.email, user.activationToken) //el mail y token salen del modelo
+                                    sendActivationEmail(user.email, user.activationToken) 
 
                                     res.render('users/mails')
                                 })
@@ -175,7 +175,7 @@ module.exports.activate = (req, res, next) => {
         .catch((e) => next(e));
 };
 
-// Para guardar y editar el perfil
+
 module.exports.updateProfile = (req, res, next) => {
 
     console.log("username", req.body.username)
